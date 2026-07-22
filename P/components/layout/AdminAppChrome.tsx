@@ -33,7 +33,7 @@ export function AdminAppChrome({
 
   return (
     <div className="page-shell flex min-h-screen items-start bg-[#FFFFFA] dark:bg-[#05131e]">
-      <AdminSidebar className="hidden md:flex" />
+      <AdminSidebar className="hidden md:flex" userName={userName} avatarPublicUrl={avatarPublicUrl} />
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
         <SheetContent
           side="left"
@@ -44,6 +44,8 @@ export function AdminAppChrome({
           <AdminSidebar
             className="flex h-full max-h-[100dvh] border-0 shadow-none"
             onNavigate={() => setMobileOpen(false)}
+            userName={userName}
+            avatarPublicUrl={avatarPublicUrl}
           />
         </SheetContent>
       </Sheet>

@@ -111,7 +111,7 @@ export default function LandingPage() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-center gap-8 flex-1 text-sm font-semibold mx-4">
+          <div className="hidden md:flex items-center justify-center gap-8 flex-1 text-base font-semibold mx-4">
             <a href="#" className="hover:text-[#ffd200] transition-colors">Home</a>
             <a href="#features" className="hover:text-[#ffd200] transition-colors">About</a>
             <a href="#modules" className="hover:text-[#ffd200] transition-colors">Services</a>

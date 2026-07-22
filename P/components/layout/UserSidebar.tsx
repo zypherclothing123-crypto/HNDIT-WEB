@@ -49,7 +49,7 @@ export function UserSidebarContent({
 
   return (
     <>
-      <div className="flex justify-center px-6 py-8 mb-2">
+      <div className="flex justify-center px-4 py-8 mb-2">
         <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-16 w-auto object-contain drop-shadow-md" />
       </div>
 
@@ -78,21 +78,20 @@ export function UserSidebarContent({
         })}
       </nav>
 
-      <div className="space-y-3 p-4">
+      <div className="px-4 pb-6 pt-2 space-y-3">
         <Button
           asChild
-          className="w-full rounded-xl bg-[#ffd200] font-semibold text-[#001824] hover:bg-[#ffe552] transition-colors py-5 shadow-md shadow-[#ffd200]/20"
+          className="w-full justify-start gap-4 rounded-xl px-4 py-6 bg-[#ffd200] font-semibold text-[#001824] hover:bg-[#ffe552] transition-colors shadow-md shadow-[#ffd200]/20 text-sm"
         >
           <Link
             href="/quiz/demo"
-            className="flex items-center justify-center gap-2"
             onClick={() => onNavigate?.()}
           >
-            <Zap className="h-4 w-4" /> Daily Challenge
+            <Zap className="h-5 w-5" /> Daily Challenge
           </Link>
         </Button>
         <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
-          <div className="flex items-center gap-3 px-4 mb-3">
+          <div className="mb-3 flex items-center gap-4 px-4 py-1">
             <Avatar className="h-10 w-10 border-2 border-[#ffd200]/50 shadow-sm">
               {avatarPublicUrl ? (
                 <AvatarImage src={avatarPublicUrl} alt="" className="object-cover" />
@@ -102,8 +101,8 @@ export function UserSidebarContent({
               </AvatarFallback>
             </Avatar>
             <div className="min-w-0">
-              <p className="text-xs text-[#72CDF4]">Signed in as</p>
-              <p className="truncate text-sm font-semibold">{userName}</p>
+              <p className="text-xs font-semibold text-[#72CDF4]">Signed in as</p>
+              <p className="truncate text-sm font-bold text-white">{userName}</p>
             </div>
           </div>
           <Link

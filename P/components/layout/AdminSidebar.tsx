@@ -22,7 +22,6 @@ import { Button } from "@/components/ui/button";
 const items = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/analytics", label: "Analytics", icon: LineChart },
-  { href: "/profile", label: "My profile", icon: UserCircle },
   { href: "/admin/subjects", label: "Subjects", icon: BookOpen },
   { href: "/admin/upload", label: "Content Upload", icon: Upload },
   { href: "/admin/users", label: "Students", icon: Users },
@@ -30,13 +29,17 @@ const items = [
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 type Props = {
   /** Close mobile sheet after navigation. */
   onNavigate?: () => void;
   className?: string;
+  userName?: string;
+  avatarPublicUrl?: string | null;
 };
 
-export function AdminSidebar({ onNavigate, className }: Props) {
+export function AdminSidebar({ onNavigate, className, userName = "Admin", avatarPublicUrl }: Props) {
   const pathname = usePathname();
   const supabase = createClient();
 
@@ -48,7 +51,7 @@ export function AdminSidebar({ onNavigate, className }: Props) {
         className
       )}
     >
-      <div className="flex justify-center px-5 py-8 mb-2">
+      <div className="flex justify-center px-4 py-8 mb-2">
         <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-16 w-auto object-contain drop-shadow-md" />
       </div>
 
@@ -78,13 +81,34 @@ export function AdminSidebar({ onNavigate, className }: Props) {
         })}
       </nav>
 
-      <div className="p-4 space-y-3">
-        <Button className="w-full gap-2 rounded-xl bg-[#005581] text-white hover:bg-[#ffd200] hover:text-[#001824] transition-colors py-5 shadow-md shadow-[#005581]/20" asChild>
+      <div className="px-4 pb-6 pt-2 space-y-3">
+        <Button className="w-full justify-start gap-4 rounded-xl px-4 py-6 bg-[#005581] text-white hover:bg-[#ffd200] hover:text-[#001824] transition-colors shadow-md shadow-[#005581]/20 text-sm font-semibold" asChild>
           <Link href="/admin/subjects" onClick={() => onNavigate?.()}>
-            <Plus className="h-4 w-4" /> New Course
+            <Plus className="h-5 w-5" /> New Course
           </Link>
         </Button>
-        <div className="mt-4 pt-4 border-t border-slate-100 dark:border-white/10">
+        <div className="mt-4 pt-4 border-t border-slate-100 dark:border-white/10 space-y-2">
+          <div className="mb-3 flex items-center gap-4 px-4 py-1">
+            <Avatar className="h-10 w-10 border-2 border-slate-200 dark:border-white/10">
+              {avatarPublicUrl ? (
+                <AvatarImage src={avatarPublicUrl} alt="" className="object-cover" />
+              ) : null}
+              <AvatarFallback className="bg-slate-100 text-slate-500 dark:bg-white/10 dark:text-white text-sm">
+                {userName.slice(0, 2).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-[#72CDF4]">Signed in as</p>
+              <p className="truncate text-sm font-bold text-slate-800 dark:text-white">{userName}</p>
+            </div>
+          </div>
+          <Link
+            href="/profile"
+            className="flex items-center gap-4 rounded-xl px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-[#005581] dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-[#ffd200] transition-colors"
+            onClick={() => onNavigate?.()}
+          >
+            <UserCircle className="h-5 w-5" /> Profile
+          </Link>
           <button
             type="button"
             className="flex w-full items-center gap-4 rounded-xl px-4 py-3 text-sm font-semibold text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-400/10 dark:hover:text-red-300 transition-colors"
@@ -94,7 +118,7 @@ export function AdminSidebar({ onNavigate, className }: Props) {
               window.location.href = "/";
             }}
           >
-            <LogOut className="h-5 w-5" /> Logout
+            <LogOut className="h-5 w-5" /> Sign out
           </button>
         </div>
       </div>

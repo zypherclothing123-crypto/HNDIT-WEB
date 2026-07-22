@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import NextTopLoader from 'nextjs-toploader';
 
 /** Design typography: Inter Regular / Semibold / Bold */
 const inter = Inter({
@@ -27,6 +28,17 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossOrigin="anonymous" referrerPolicy="no-referrer" />
       </head>
       <body className={`${inter.className} min-h-screen font-sans antialiased`}>
+        <NextTopLoader
+          color="#ffd200"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={true}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #ffd200,0 0 5px #ffd200"
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
