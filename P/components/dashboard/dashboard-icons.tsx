@@ -29,7 +29,9 @@ export const DASHBOARD_ICONS = {
 export type DashboardIconName = keyof typeof DASHBOARD_ICONS;
 
 export function resolveDashboardIcon(
-  name: DashboardIconName
+  name?: DashboardIconName | string
 ): LucideIcon {
-  return DASHBOARD_ICONS[name];
+  return (
+    DASHBOARD_ICONS[(name ?? "medal") as DashboardIconName] ?? Medal
+  ) as LucideIcon;
 }

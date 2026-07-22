@@ -4,7 +4,7 @@ create extension if not exists "pgcrypto";
 
 -- Profiles
 create table if not exists public.profiles (
-  id text primary key,
+  id uuid references auth.users on delete cascade primary key,
   email text,
   full_name text,
   role text default 'user',
@@ -21,7 +21,7 @@ language sql
 stable
 as $$
   select coalesce(
-    (select role = 'admin' from public.profiles where id = auth.uid()::text),
+    (select role = 'admin' from public.profiles where id = auth.uid()),
     false
   );
 $$;
@@ -32,15 +32,15 @@ drop policy if exists "profiles_insert_own" on public.profiles;
 
 create policy "profiles_select_own_or_admin"
   on public.profiles for select
-  using (id = auth.uid()::text or public.is_admin());
+  using (id = auth.uid() or public.is_admin());
 
 create policy "profiles_update_own_or_admin"
   on public.profiles for update
-  using (id = auth.uid()::text or public.is_admin());
+  using (id = auth.uid() or public.is_admin());
 
 create policy "profiles_insert_own"
   on public.profiles for insert
-  with check (id = auth.uid()::text or public.is_admin());
+  with check (id = auth.uid() or public.is_admin());
 
 -- Auto-create profile on signup
 create or replace function public.handle_new_user()
@@ -50,12 +50,11 @@ security definer
 set search_path = public
 as $$
 begin
-  insert into public.profiles (id, email, full_name, student_id)
+  insert into public.profiles (id, email, full_name)
   values (
     new.id,
     new.email,
-    coalesce(new.raw_user_meta_data ->> 'full_name', split_part(new.email, '@', 1)),
-    new.raw_user_meta_data ->> 'student_id'
+    coalesce(new.raw_user_meta_data ->> 'full_name', split_part(new.email, '@', 1))
   );
   return new;
 end;
@@ -98,7 +97,7 @@ create policy "subjects_write_admin"
 create table if not exists public.uploaded_notes (
   id uuid default gen_random_uuid() primary key,
   subject_id uuid references public.subjects(id) on delete set null,
-  uploaded_by text references public.profiles(id) on delete set null,
+  uploaded_by uuid references public.profiles(id) on delete set null,
   file_name text,
   file_url text,
   extracted_text text,
@@ -115,15 +114,15 @@ drop policy if exists "notes_delete_admin" on public.uploaded_notes;
 
 create policy "notes_select_own_or_admin"
   on public.uploaded_notes for select
-  using (uploaded_by = auth.uid()::text or public.is_admin());
+  using (uploaded_by = auth.uid() or public.is_admin());
 
 create policy "notes_insert_authenticated"
   on public.uploaded_notes for insert
-  with check (uploaded_by = auth.uid()::text or public.is_admin());
+  with check (uploaded_by = auth.uid() or public.is_admin());
 
 create policy "notes_update_own_or_admin"
   on public.uploaded_notes for update
-  using (uploaded_by = auth.uid()::text or public.is_admin());
+  using (uploaded_by = auth.uid() or public.is_admin());
 
 create policy "notes_delete_admin"
   on public.uploaded_notes for delete
@@ -194,7 +193,7 @@ create policy "questions_write_admin"
 -- user_progress
 create table if not exists public.user_progress (
   id uuid default gen_random_uuid() primary key,
-  user_id text references public.profiles(id) on delete cascade,
+  user_id uuid references public.profiles(id) on delete cascade,
   lab_id uuid references public.labs(id) on delete cascade,
   completed boolean default false,
   score integer default 0,
@@ -211,20 +210,20 @@ drop policy if exists "progress_update_own_or_admin" on public.user_progress;
 
 create policy "progress_select_own_or_admin"
   on public.user_progress for select
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 create policy "progress_upsert_own"
   on public.user_progress for insert
-  with check (user_id = auth.uid()::text or public.is_admin());
+  with check (user_id = auth.uid() or public.is_admin());
 
 create policy "progress_update_own_or_admin"
   on public.user_progress for update
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 -- achievements
 create table if not exists public.achievements (
   id uuid default gen_random_uuid() primary key,
-  user_id text references public.profiles(id) on delete cascade,
+  user_id uuid references public.profiles(id) on delete cascade,
   title text,
   description text,
   badge_icon text,
@@ -238,16 +237,16 @@ drop policy if exists "achievements_insert_own_or_admin" on public.achievements;
 
 create policy "achievements_select_own_or_admin"
   on public.achievements for select
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 create policy "achievements_insert_own_or_admin"
   on public.achievements for insert
-  with check (user_id = auth.uid()::text or public.is_admin());
+  with check (user_id = auth.uid() or public.is_admin());
 
 -- notifications (in-app: achievements, clan wars, battle invites, etc.)
 create table if not exists public.notifications (
   id uuid default gen_random_uuid() primary key,
-  user_id text not null references public.profiles(id) on delete cascade,
+  user_id uuid not null references public.profiles(id) on delete cascade,
   type text not null default 'system',
   title text not null,
   body text,
@@ -273,24 +272,24 @@ drop policy if exists "notifications_delete_own_or_admin" on public.notification
 
 create policy "notifications_select_own_or_admin"
   on public.notifications for select
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 create policy "notifications_insert_own_or_admin"
   on public.notifications for insert
-  with check (user_id = auth.uid()::text or public.is_admin());
+  with check (user_id = auth.uid() or public.is_admin());
 
 create policy "notifications_update_own_or_admin"
   on public.notifications for update
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 create policy "notifications_delete_own_or_admin"
   on public.notifications for delete
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 -- chat_sessions
 create table if not exists public.chat_sessions (
   id bigint generated always as identity primary key,
-  user_id text references public.profiles(id) on delete cascade not null,
+  user_id uuid references public.profiles(id) on delete cascade not null,
   session_title text default 'New Chat',
   mode text check (mode in ('general','concept_explain','code_debug','past_papers','lab_practical')) default 'general',
   language text default 'en',
@@ -308,19 +307,19 @@ drop policy if exists "chat_delete_own" on public.chat_sessions;
 
 create policy "chat_select_own"
   on public.chat_sessions for select
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 create policy "chat_insert_own"
   on public.chat_sessions for insert
-  with check (user_id = auth.uid()::text);
+  with check (user_id = auth.uid());
 
 create policy "chat_update_own"
   on public.chat_sessions for update
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 create policy "chat_delete_own"
   on public.chat_sessions for delete
-  using (user_id = auth.uid()::text or public.is_admin());
+  using (user_id = auth.uid() or public.is_admin());
 
 -- Storage bucket (course materials)
 insert into storage.buckets (id, name, public)
@@ -335,12 +334,12 @@ create policy "storage_course_read_own_or_admin"
   on storage.objects for select
   using (
     bucket_id = 'course-materials'
-    and (owner::text = auth.uid()::text or public.is_admin())
+    and (owner = auth.uid() or public.is_admin())
   );
 
 create policy "storage_course_upload_own"
   on storage.objects for insert
-  with check (bucket_id = 'course-materials' and owner::text = auth.uid()::text);
+  with check (bucket_id = 'course-materials' and owner = auth.uid());
 
 create policy "storage_course_update_admin"
   on storage.objects for update

@@ -49,9 +49,7 @@ export function AdminSidebar({ onNavigate, className }: Props) {
       )}
     >
       <div className="flex items-start gap-3 px-5 py-8">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#534AB7]/10 text-[#534AB7]">
-          <GraduationCap className="h-6 w-6" />
-        </div>
+        <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-16 w-auto object-contain rounded-full" />
         <div>
           <p className="text-xs font-bold uppercase tracking-wide text-[#534AB7]">
             Admin Panel

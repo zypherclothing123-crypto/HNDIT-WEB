@@ -50,9 +50,7 @@ export function UserSidebarContent({
   return (
     <>
       <div className="flex items-center gap-3 px-6 py-8">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15">
-          <LayoutDashboard className="h-6 w-6" />
-        </div>
+        <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-16 w-auto object-contain rounded-full bg-white/10" />
         <div>
           <p className="text-sm font-bold leading-tight">HNDIT Lab</p>
           <p className="text-[10px] uppercase tracking-wide text-white/70">

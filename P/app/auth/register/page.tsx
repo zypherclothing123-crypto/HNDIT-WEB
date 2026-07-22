@@ -38,9 +38,9 @@ export default function RegisterPage() {
       email,
       password,
       options: {
-        data: { 
+        data: {
           full_name: fullName,
-          student_id: studentId 
+          student_id: studentId
         },
         emailRedirectTo: undefined, // no email confirmation
       },
@@ -61,7 +61,7 @@ export default function RegisterPage() {
     <div className="min-h-screen flex">
       {/* Left Form Area */}
       <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 bg-white relative">
-        
+
         {/* Back Link */}
         <div className="absolute top-8 left-8">
           <Link href="/" className="text-sm text-slate-500 hover:text-slate-800 transition-colors flex items-center gap-2">
@@ -77,7 +77,7 @@ export default function RegisterPage() {
             </div>
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">HNDIT Smart Lab</h1>
           </div>
-          
+
           <h2 className="text-3xl font-bold text-slate-900 mb-2">Create Account</h2>
           <p className="text-sm text-slate-500 mb-8">Join HNDIT Smart Lab today to manage your studies.</p>
 
@@ -193,13 +193,13 @@ export default function RegisterPage() {
           <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#534AB7]/10 blur-[120px] animate-pulse" />
           <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-indigo-600/10 blur-[100px] animate-pulse delay-1000" />
         </div>
-        
+
         <div className="relative z-10 w-full max-w-lg">
           <p className="text-[#534AB7] font-semibold text-sm tracking-wider uppercase mb-4">
             Start Learning Today
           </p>
           <h2 className="text-5xl font-bold text-white leading-tight mb-6">
-            Gain complete<br/>control over your<br/>education.
+            Gain complete<br />control over your<br />education.
           </h2>
 
           <div className="space-y-6 mt-12">

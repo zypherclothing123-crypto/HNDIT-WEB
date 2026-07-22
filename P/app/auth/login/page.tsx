@@ -61,9 +61,7 @@ export default function LoginPage() {
         <div className="w-full max-w-md">
           {/* Logo / Header */}
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#534AB7] to-indigo-400 flex items-center justify-center shadow-lg shadow-[#534AB7]/20">
-              <i className="fa-solid fa-graduation-cap text-white text-lg"></i>
-            </div>
+            <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-16 md:h-20 w-auto object-contain" />
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">HNDIT Smart Lab</h1>
           </div>
           
