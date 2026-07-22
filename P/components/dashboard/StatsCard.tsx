@@ -36,7 +36,7 @@ export function StatsCard({
       )}
     >
       <div className="flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#534AB7]/10 text-[#534AB7] dark:bg-[#6B5FD6]/20 dark:text-[#6B5FD6]">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#005581]/10 text-[#005581] dark:bg-[#00456a]/20 dark:text-[#00456a]">
           <Icon className="h-5 w-5" />
         </div>
         <div>

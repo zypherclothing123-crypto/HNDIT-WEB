@@ -24,10 +24,10 @@ export function ModeSelector({
           key={m.id}
           type="button"
           onClick={() => onChange(m.id)}
-          className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+          className={`rounded-full border-2 px-4 py-1.5 text-xs font-bold transition-all hover:scale-105 ${
             value === m.id
-              ? "bg-[#534AB7] text-white"
-              : "bg-muted text-heading hover:bg-muted/80"
+              ? "border-[#72CDF4] bg-[#72CDF4]/20 text-[#005581] shadow-sm dark:text-[#72CDF4]"
+              : "border-transparent bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:bg-white/10"
           }`}
         >
           {m.label}

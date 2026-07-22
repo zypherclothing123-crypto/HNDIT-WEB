@@ -159,7 +159,7 @@ export function NavbarSearch({ variant, placeholder }: Props) {
                         className={cn(
                           "flex w-full flex-col rounded-xl px-3 py-2 text-left text-sm transition-colors",
                           active
-                            ? "bg-[#534AB7]/10 text-[#534AB7]"
+                            ? "bg-[#005581]/10 text-[#005581]"
                             : "hover:bg-muted/80"
                         )}
                         onMouseEnter={() => setActiveIndex(flatIndex)}

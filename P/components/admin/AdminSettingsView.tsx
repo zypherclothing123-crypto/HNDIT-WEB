@@ -38,7 +38,7 @@ export function AdminSettingsView({
   return (
     <div className="space-y-8">
       <div>
-        <p className="text-xs font-bold uppercase tracking-wide text-[#534AB7]">
+        <p className="text-xs font-bold uppercase tracking-wide text-[#005581]">
           Settings
         </p>
         <h1 className="mt-1 text-2xl font-bold text-heading">Platform</h1>
@@ -52,7 +52,7 @@ export function AdminSettingsView({
         <Card className="rounded-2xl shadow-soft">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <GraduationCap className="h-5 w-5 text-[#534AB7]" />
+              <GraduationCap className="h-5 w-5 text-[#005581]" />
               <CardTitle className="text-lg">Student experience</CardTitle>
             </div>
             <CardDescription>
@@ -87,7 +87,7 @@ export function AdminSettingsView({
         <Card className="rounded-2xl shadow-soft">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-[#534AB7]" />
+              <Shield className="h-5 w-5 text-[#005581]" />
               <CardTitle className="text-lg">Supabase</CardTitle>
             </div>
             <CardDescription>
@@ -121,7 +121,7 @@ export function AdminSettingsView({
         <Card className="rounded-2xl shadow-soft lg:col-span-2">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5 text-[#534AB7]" />
+              <SlidersHorizontal className="h-5 w-5 text-[#005581]" />
               <CardTitle className="text-lg">Operations</CardTitle>
             </div>
             <CardDescription>

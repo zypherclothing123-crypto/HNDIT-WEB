@@ -41,7 +41,7 @@ export default async function SubjectLabsPage({
   return (
     <div className="mx-auto max-w-5xl space-y-6">
       <div>
-        <p className="text-sm font-semibold text-[#534AB7]">
+        <p className="text-sm font-semibold text-[#005581]">
           Year {subject.year} • Sem {subject.semester}
         </p>
         <h1 className="text-3xl font-bold text-heading">{subject.name}</h1>

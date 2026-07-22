@@ -311,7 +311,7 @@ export function ProfileCustomization({
           >
             Leaderboard
           </Link>
-          <span className="block rounded-lg px-2 py-2 font-semibold text-[#534AB7]">
+          <span className="block rounded-lg px-2 py-2 font-semibold text-[#005581]">
             Profile
           </span>
         </nav>
@@ -345,11 +345,11 @@ export function ProfileCustomization({
                     onClick={() => toggleShowcase(b.id)}
                     className={`rounded-2xl border p-4 text-center shadow-sm ${
                       showcase.includes(b.id)
-                        ? "border-[#534AB7] ring-2 ring-[#534AB7]/30"
+                        ? "border-[#005581] ring-2 ring-[#005581]/30"
                         : "border-muted"
                     }`}
                   >
-                    <Icon className="mx-auto h-8 w-8 text-[#534AB7]" />
+                    <Icon className="mx-auto h-8 w-8 text-[#005581]" />
                     <p className="mt-2 text-xs font-semibold leading-snug">
                       {b.title}
                     </p>
@@ -421,7 +421,7 @@ export function ProfileCustomization({
           </TabsContent>
           <TabsContent value="titles" className="mt-4 text-sm text-muted-foreground">
             Titles can mirror leaderboard rank — check{" "}
-            <Link href="/leaderboard" className="font-semibold text-[#534AB7]">
+            <Link href="/leaderboard" className="font-semibold text-[#005581]">
               The Arena
             </Link>
             .
@@ -433,8 +433,8 @@ export function ProfileCustomization({
         <p className="text-xs font-bold uppercase text-muted-foreground">
           Preview
         </p>
-        <div className="rounded-3xl border bg-gradient-to-br from-[#534AB7]/10 to-[#6dd5ed]/20 p-4">
-          <div className="h-16 rounded-2xl bg-[#534AB7]/30" />
+        <div className="rounded-3xl border bg-gradient-to-br from-[#005581]/10 to-[#72CDF4]/20 p-4">
+          <div className="h-16 rounded-2xl bg-[#005581]/30" />
           <div className="mt-4 flex flex-col items-center">
             <ProfileAvatarCircle
               className="h-16 w-16 border-4 border-white shadow"
@@ -454,7 +454,7 @@ export function ProfileCustomization({
                 return (
                   <span
                     key={id}
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/70 text-[10px] font-bold text-[#534AB7]"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/70 text-[10px] font-bold text-[#005581]"
                     title={a?.title}
                   >
                     {(a?.title ?? "?").slice(0, 1).toUpperCase()}
@@ -464,7 +464,7 @@ export function ProfileCustomization({
             </div>
           </div>
         </div>
-        <div className="rounded-2xl border border-dashed bg-[#F8F7FF] p-4 text-sm text-muted-foreground dark:bg-[#1a1a2e]">
+        <div className="rounded-2xl border border-dashed bg-[#FFFFFA] p-4 text-sm text-muted-foreground dark:bg-[#05131e]">
           Tap up to three badges on the left to feature them in your preview strip.
         </div>
         <Button variant="outline" className="w-full rounded-xl" asChild>

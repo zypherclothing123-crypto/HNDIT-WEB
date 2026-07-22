@@ -21,7 +21,7 @@ export function EngagementChart({ data }: { data: WeeklyEngagement }) {
       : `${data.weekOverWeekPct >= 0 ? "+" : ""}${data.weekOverWeekPct}% vs prior week`;
 
   return (
-    <section className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]">
+    <section className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]">
       <div className="mb-4 flex items-center justify-between">
         <div>
           <h3 className="text-base font-bold text-heading">
@@ -51,7 +51,7 @@ export function EngagementChart({ data }: { data: WeeklyEngagement }) {
             />
             <Bar
               dataKey="activity"
-              fill="#534AB7"
+              fill="#005581"
               radius={[8, 8, 0, 0]}
               maxBarSize={32}
             />
@@ -62,9 +62,9 @@ export function EngagementChart({ data }: { data: WeeklyEngagement }) {
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-3 rounded-xl bg-[#F8F7FF] p-3 dark:bg-[#1a1a2e]"
+          className="flex items-center gap-3 rounded-xl bg-[#FFFFFA] p-3 dark:bg-[#05131e]"
         >
-          <Target className="h-8 w-8 text-[#534AB7]" />
+          <Target className="h-8 w-8 text-[#005581]" />
           <div>
             <p className="text-xs font-semibold text-muted-foreground">
               Busiest day
@@ -88,7 +88,7 @@ export function EngagementChart({ data }: { data: WeeklyEngagement }) {
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="flex items-center gap-3 rounded-xl bg-[#F8F7FF] p-3 dark:bg-[#1a1a2e]"
+          className="flex items-center gap-3 rounded-xl bg-[#FFFFFA] p-3 dark:bg-[#05131e]"
         >
           <Zap className="h-8 w-8 text-[#1D9E75]" />
           <div>

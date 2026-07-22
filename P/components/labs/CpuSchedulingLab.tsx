@@ -10,7 +10,7 @@ import { createClient } from "@/lib/supabase/client";
 type Proc = { id: string; burst: number; color: string };
 
 const initial: Proc[] = [
-  { id: "P1", burst: 12, color: "#534AB7" },
+  { id: "P1", burst: 12, color: "#005581" },
   { id: "P2", burst: 4, color: "#EF9F27" },
   { id: "P3", burst: 8, color: "#1D9E75" },
 ];
@@ -102,7 +102,7 @@ export function CpuSchedulingLab({ opponentId }: { opponentId?: string }) {
         </ol>
       </section>
 
-      <section className="space-y-3 rounded-2xl border bg-[#1a1a2e] p-4 text-white shadow-soft">
+      <section className="space-y-3 rounded-2xl border bg-[#05131e] p-4 text-white shadow-soft">
         <header className="flex flex-wrap items-center justify-between gap-2 text-xs text-white/70">
           <span>lab_simulation_v1.0.cpu</span>
           <span>System quantum: 24ms</span>
@@ -113,7 +113,7 @@ export function CpuSchedulingLab({ opponentId }: { opponentId?: string }) {
             {queue.map((p) => (
               <div
                 key={p.id}
-                className="rounded-xl border border-white/10 bg-[#2d2d44] px-3 py-2 text-xs"
+                className="rounded-xl border border-white/10 bg-[#0a1f2e] px-3 py-2 text-xs"
                 style={{ borderColor: p.color }}
               >
                 <div className="font-bold">{p.id}</div>
@@ -150,7 +150,7 @@ export function CpuSchedulingLab({ opponentId }: { opponentId?: string }) {
                   className="flex h-full items-end rounded-md"
                   style={{
                     width,
-                    background: proc?.color ?? "#534AB7",
+                    background: proc?.color ?? "#005581",
                   }}
                   title={`${seg.id}: ${seg.start}-${seg.end}ms`}
                 />
@@ -166,7 +166,7 @@ export function CpuSchedulingLab({ opponentId }: { opponentId?: string }) {
           <Button
             type="button"
             size="sm"
-            className="rounded-full bg-white text-[#1a1a2e]"
+            className="rounded-full bg-white text-[#05131e]"
             onClick={runFcfs}
           >
             ▶ Play FCFS
@@ -212,7 +212,7 @@ export function CpuSchedulingLab({ opponentId }: { opponentId?: string }) {
             </div>
           ) : (
             <>
-              <div className="text-3xl font-bold text-[#534AB7]">72%</div>
+              <div className="text-3xl font-bold text-[#005581]">72%</div>
               <Progress value={72} className="mt-3 w-full" />
             </>
           )}

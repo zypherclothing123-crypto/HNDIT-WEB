@@ -117,7 +117,7 @@ export function NotificationBell({ initialItems, initialUnreadCount }: Props) {
           {unreadCount > 0 ? (
             <span
               className={cn(
-                "absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#534AB7] px-1 text-[10px] font-bold text-white"
+                "absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#005581] px-1 text-[10px] font-bold text-white"
               )}
             >
               {unreadCount > 99 ? "99+" : unreadCount}
@@ -149,7 +149,7 @@ export function NotificationBell({ initialItems, initialUnreadCount }: Props) {
                 asChild
                 className={cn(
                   "cursor-pointer rounded-none px-3 py-2.5 focus:bg-accent",
-                  isUnread && "bg-[#534AB7]/5 dark:bg-[#534AB7]/10"
+                  isUnread && "bg-[#005581]/5 dark:bg-[#005581]/10"
                 )}
               >
                 <Link
@@ -158,7 +158,7 @@ export function NotificationBell({ initialItems, initialUnreadCount }: Props) {
                   onClick={() => void markRead(n.id)}
                 >
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-muted">
-                    <Icon className="h-4 w-4 text-[#534AB7]" />
+                    <Icon className="h-4 w-4 text-[#005581]" />
                   </div>
                   <div className="min-w-0 flex-1 text-left">
                     <p className="text-sm font-semibold leading-snug text-heading">

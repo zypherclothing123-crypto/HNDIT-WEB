@@ -2,36 +2,45 @@
 
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/stores/theme-store";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
-/**
- * Toggles light ↔ dark. When current mode is system, switches to explicit opposite of resolved theme.
- */
 export function ThemeToggle() {
-  const { resolved, setTheme, theme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggle = () => {
-    if (theme === "system") {
-      setTheme(resolved === "dark" ? "light" : "dark");
-      return;
-    }
-    setTheme(resolved === "dark" ? "light" : "dark");
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
+  if (!mounted) {
+    return (
+      <Button variant="ghost" size="icon" className="rounded-full opacity-0">
+        <Sun className="h-5 w-5" />
+      </Button>
+    );
+  }
+
   return (
-    <Button
+    <button
       type="button"
-      variant="ghost"
-      size="icon"
-      className="rounded-full transition-all duration-200"
       onClick={toggle}
       aria-label="Toggle theme"
+      className={`relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 border-2 ${
+        resolvedTheme === "dark"
+          ? "bg-slate-800 border-white/10 hover:border-[#ffd200]/50 hover:bg-slate-700 shadow-[0_0_10px_rgba(255,210,0,0.1)] hover:shadow-[0_0_15px_rgba(255,210,0,0.3)]"
+          : "bg-white border-slate-200 hover:border-[#005581]/30 hover:bg-slate-50 shadow-sm hover:shadow-md"
+      }`}
     >
-      {resolved === "dark" ? (
-        <Sun className="h-5 w-5 text-amber-300" />
+      {resolvedTheme === "dark" ? (
+        <Sun className="h-5 w-5 text-[#ffd200] transition-transform duration-500 hover:rotate-90" />
       ) : (
-        <Moon className="h-5 w-5 text-[#534AB7]" />
+        <Moon className="h-5 w-5 text-[#005581] transition-transform duration-500 hover:-rotate-12" />
       )}
-    </Button>
+    </button>
   );
 }

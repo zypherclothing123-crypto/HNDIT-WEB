@@ -16,7 +16,7 @@ export function TheorySection({ sections }: { sections: Section[] }) {
           transition={{ delay: i * 0.05 }}
           className="rounded-2xl border bg-card p-5 shadow-sm"
         >
-          <h3 className="text-lg font-bold text-[#534AB7]">{s.heading}</h3>
+          <h3 className="text-lg font-bold text-[#005581]">{s.heading}</h3>
           <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
             {s.body}
           </p>

@@ -37,7 +37,7 @@ export function SubjectCard({
         href={href}
         className="block rounded-2xl border bg-card p-5 shadow-soft transition-shadow hover:shadow-md"
       >
-        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#534AB7]/10 text-[#534AB7]">
+        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#005581]/10 text-[#005581]">
           <Icon className="h-6 w-6" />
         </div>
         <h3 className="text-lg font-bold text-heading">{title}</h3>

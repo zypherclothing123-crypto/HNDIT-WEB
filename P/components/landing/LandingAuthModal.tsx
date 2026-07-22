@@ -11,7 +11,7 @@ export function LandingAuthModal() {
       <SignedOut>
         <div className="flex flex-col w-full gap-4">
           <SignInButton mode="modal">
-            <button className="landing-btn-primary w-full py-3 text-lg font-semibold shadow-lg shadow-[#534AB7]/30 transition-transform hover:scale-[1.02]">
+            <button className="landing-btn-primary w-full py-3 text-lg font-semibold shadow-lg shadow-[#005581]/30 transition-transform hover:scale-[1.02]">
               Sign In
             </button>
           </SignInButton>
@@ -26,7 +26,7 @@ export function LandingAuthModal() {
       
       <p className="text-xs text-muted-foreground pt-4">
         By signing up you agree to our{" "}
-        <span className="text-[#534AB7] dark:text-[#9d96e8] font-medium cursor-pointer hover:underline">Terms of Service</span>
+        <span className="text-[#005581] dark:text-[#72CDF4] font-medium cursor-pointer hover:underline">Terms of Service</span>
       </p>
     </div>
   );

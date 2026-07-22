@@ -53,7 +53,7 @@ export function CodeSimulation({ examples }: { examples: Example[] }) {
               onClick={() => setIdx(i)}
               className={`rounded-full px-3 py-1 text-xs font-semibold ${
                 i === idx
-                  ? "bg-[#534AB7] text-white"
+                  ? "bg-[#005581] text-white"
                   : "bg-muted text-heading"
               }`}
             >
@@ -64,7 +64,7 @@ export function CodeSimulation({ examples }: { examples: Example[] }) {
         {ex.explanation ? (
           <p className="text-sm text-muted-foreground">{ex.explanation}</p>
         ) : null}
-        <pre className="max-h-[420px] overflow-auto rounded-2xl bg-[#1a1a2e] p-4 text-xs text-white">
+        <pre className="max-h-[420px] overflow-auto rounded-2xl bg-[#05131e] p-4 text-xs text-white">
           <code
             className={`language-${ex.language.toLowerCase()}`}
             dangerouslySetInnerHTML={{ __html: highlight(ex.code, ex.language) }}

@@ -23,7 +23,7 @@ export default async function AdminLabsPage() {
         <p className="mt-1 text-sm text-muted-foreground">
           Edit titles and move labs between subjects. Renaming a subject’s display
           name (not its ID) is done under{" "}
-          <Link href="/admin/subjects" className="font-semibold text-[#534AB7] underline">
+          <Link href="/admin/subjects" className="font-semibold text-[#005581] underline">
             Subjects
           </Link>
           .

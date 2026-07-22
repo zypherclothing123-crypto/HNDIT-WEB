@@ -14,7 +14,7 @@ export default function UpdatePasswordPage() {
           <UpdatePasswordForm />
         </div>
         <p className="mt-6 text-center text-sm text-muted-foreground">
-          <Link href="/auth/login" className="font-semibold text-[#534AB7]">
+          <Link href="/auth/login" className="font-semibold text-[#005581]">
             Sign in instead
           </Link>
         </p>

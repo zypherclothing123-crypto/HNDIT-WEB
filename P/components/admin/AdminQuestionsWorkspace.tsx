@@ -144,7 +144,7 @@ export function AdminQuestionsWorkspace({ labId, subjectId, initialQuestions }: 
           questions.map((q, idx) => (
             <div
               key={q.id}
-              className="group flex gap-4 rounded-xl border bg-white p-4 shadow-sm transition hover:border-[#534AB7]/40 dark:border-white/10 dark:bg-[#2d2d44]"
+              className="group flex gap-4 rounded-xl border bg-white p-4 shadow-sm transition hover:border-[#005581]/40 dark:border-white/10 dark:bg-[#0a1f2e]"
             >
               <div className="flex h-8 w-8 shrink-0 flex-col items-center justify-center rounded-full bg-muted/50 text-xs font-bold text-muted-foreground">
                 {idx + 1}
@@ -157,8 +157,8 @@ export function AdminQuestionsWorkspace({ labId, subjectId, initialQuestions }: 
                       key={i}
                       className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 ${
                         opt === q.correct_answer
-                          ? "border-[#1D9E75] bg-[#1D9E75]/10 font-medium text-[#1D9E75]"
-                          : "border-transparent bg-muted/30"
+                          ? "border-emerald-500 bg-emerald-50 font-bold text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
+                          : "border-transparent bg-slate-100 dark:bg-white/5"
                       }`}
                     >
                       <span className="text-[10px] font-bold uppercase opacity-50">
@@ -204,10 +204,10 @@ export function AdminQuestionsWorkspace({ labId, subjectId, initialQuestions }: 
               {options.map((opt, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div
-                    className={`flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 text-xs font-bold transition-colors ${
+                    className={`flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 text-xs font-bold transition-all hover:scale-105 ${
                       correctOptionIdx === i
-                        ? "border-[#1D9E75] bg-[#1D9E75] text-white"
-                        : "border-muted-foreground/30 text-muted-foreground hover:border-[#1D9E75]/50"
+                        ? "border-emerald-500 bg-emerald-500 text-white shadow-md shadow-emerald-500/20"
+                        : "border-slate-300 text-slate-500 hover:border-emerald-400/50 dark:border-white/20 dark:text-slate-400"
                     }`}
                     onClick={() => setCorrectOptionIdx(i)}
                     title="Mark as correct answer"
@@ -222,7 +222,7 @@ export function AdminQuestionsWorkspace({ labId, subjectId, initialQuestions }: 
                       copy[i] = e.target.value;
                       setOptions(copy);
                     }}
-                    className={correctOptionIdx === i ? "border-[#1D9E75]/40 focus-visible:ring-[#1D9E75]" : ""}
+                    className={correctOptionIdx === i ? "border-emerald-500/40 focus-visible:ring-emerald-500 bg-emerald-50/30 dark:bg-emerald-500/5" : "hover:border-[#72CDF4] transition-colors"}
                   />
                 </div>
               ))}
@@ -263,7 +263,7 @@ export function AdminQuestionsWorkspace({ labId, subjectId, initialQuestions }: 
           </div>
         </div>
       ) : (
-        <Button onClick={() => setIsCreating(true)} className="w-full gap-2 border-dashed bg-transparent text-[#534AB7] hover:bg-[#534AB7]/5" variant="outline">
+        <Button onClick={() => setIsCreating(true)} className="w-full gap-2 border-dashed bg-transparent text-[#005581] hover:bg-[#005581]/5" variant="outline">
           <Plus className="h-4 w-4" /> Add Question
         </Button>
       )}

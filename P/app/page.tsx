@@ -1,6 +1,11 @@
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { AnimatedCounter } from "@/components/landing/AnimatedCounter";
+import { AuthNavButtons } from "@/components/landing/AuthNavButtons";
+import { LogoThemeToggle } from "@/components/landing/LogoThemeToggle";
 import Link from "next/link";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
 
 
 export const metadata = {
@@ -92,41 +97,61 @@ const modules = [
 export default function LandingPage() {
   return (
     <div className="landing-root">
-      {/* Animated background orbs */}
-      <div className="landing-bg-orbs" aria-hidden="true">
-        <div className="orb orb-1" />
-        <div className="orb orb-2" />
-        <div className="orb orb-3" />
-        <div className="orb orb-4" />
-      </div>
+      {/* Background Image & Glass Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat" aria-hidden="true" />
+      <div className="fixed inset-0 pointer-events-none z-0 bg-white/40 dark:bg-[#05131e]/80 backdrop-blur-[16px]" aria-hidden="true" />
 
       {/* ── NAVBAR ── */}
-      <nav className="absolute top-0 w-full z-50 px-6 py-6 flex justify-center">
-        <div className="landing-container w-full flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 border-2 border-primary rounded-md flex items-center justify-center">
-              <i className="fa-solid fa-globe text-primary text-xl"></i>
-            </div>
-            <span className="text-xl font-bold text-primary tracking-widest uppercase">
-              HNDIT
-            </span>
+      <nav className="absolute top-6 left-0 right-0 w-full z-50 px-4 flex justify-center">
+        <div className="bg-[#005581] dark:bg-[#05131e] border border-white/10 text-white rounded-full w-full max-w-5xl px-3 py-3 flex items-center justify-between shadow-2xl">
+          
+          {/* Logo */}
+          <div className="flex-shrink-0 bg-white rounded-full h-12 w-12 flex items-center justify-center p-1.5 ml-1">
+            <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-full w-auto object-contain" />
           </div>
 
-          <div className="hidden md:flex items-center justify-center gap-8 flex-1">
-            <a href="#" className="custom-nav-link active">Home</a>
-            <a href="#features" className="custom-nav-link">About</a>
-            <a href="#modules" className="custom-nav-link">Services</a>
-            <a href="#testimonials" className="custom-nav-link">Gallary</a>
-            <a href="#contact" className="custom-nav-link">Contact</a>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center justify-center gap-8 flex-1 text-sm font-semibold mx-4">
+            <a href="#" className="hover:text-[#ffd200] transition-colors">Home</a>
+            <a href="#features" className="hover:text-[#ffd200] transition-colors">About</a>
+            <a href="#modules" className="hover:text-[#ffd200] transition-colors">Services</a>
+            <a href="#testimonials" className="hover:text-[#ffd200] transition-colors">Gallery</a>
+            <a href="#contact" className="hover:text-[#ffd200] transition-colors">Contact</a>
           </div>
 
-          <div className="hidden md:flex items-center justify-end w-[240px] gap-4">
-            <Link href="/auth/login" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
-              Sign In
-            </Link>
-            <Link href="/auth/register" className="bg-primary hover:opacity-90 text-primary-foreground text-sm font-bold py-2 px-4 rounded transition-opacity">
-              Register
-            </Link>
+          {/* Desktop Right */}
+          <div className="hidden md:flex items-center justify-end gap-5 mr-2">
+            <AuthNavButtons />
+          </div>
+          
+          {/* Mobile Navigation */}
+          <div className="flex md:hidden items-center gap-3 mr-2">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Menu" className="text-white hover:bg-white/20 hover:text-white rounded-full">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="top" className="bg-[#005581]/95 dark:bg-[#05131e]/95 backdrop-blur-xl border-none text-white w-full rounded-b-3xl pt-24 pb-12 shadow-2xl">
+                <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                <div className="flex flex-col items-center gap-8">
+                  <a href="#" className="text-xl font-semibold hover:text-primary transition-colors">Home</a>
+                  <a href="#features" className="text-xl font-semibold hover:text-primary transition-colors">About</a>
+                  <a href="#modules" className="text-xl font-semibold hover:text-primary transition-colors">Services</a>
+                  <a href="#testimonials" className="text-xl font-semibold hover:text-primary transition-colors">Gallery</a>
+                  <a href="#contact" className="text-xl font-semibold hover:text-primary transition-colors">Contact</a>
+                  
+                  <div className="h-px w-32 bg-white/20 my-2" />
+                  
+                  <Link href="/auth/login" className="text-lg font-semibold hover:text-primary transition-colors">
+                    Sign In
+                  </Link>
+                  <Link href="/auth/register" className="bg-[#ffd200] text-black w-full max-w-[200px] text-center font-bold py-3.5 rounded-full transition-opacity hover:opacity-90">
+                    Register
+                  </Link>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </nav>
@@ -135,6 +160,10 @@ export default function LandingPage() {
       <section className="landing-hero">
         <div className="landing-container">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto gap-6">
+            <LogoThemeToggle 
+              className="transition-transform hover:scale-105 active:scale-95 cursor-pointer focus:outline-none rounded-full p-2" 
+              imgClassName="h-32 md:h-40 w-auto object-contain mb-2 drop-shadow-lg" 
+            />
             <div className="landing-badge">
               <span className="landing-badge-dot" />
               <i className="fa-solid fa-graduation-cap mr-2"></i> Sri Lanka&apos;s #1 HNDIT Study Platform
@@ -154,22 +183,22 @@ export default function LandingPage() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-3 mt-6 mb-8">
-              <Link href="/auth/register" className="landing-btn-primary">
+              <Link href="/auth/register" className="landing-btn-primary shadow-[0_0_20px_rgba(255,210,0,0.6)] hover:shadow-[0_0_30px_rgba(255,210,0,0.8)] transition-shadow">
                 Start Learning Free ➔
               </Link>
-              <a href="#features" className="landing-btn-secondary">
+              <a href="#features" className="landing-btn-secondary shadow-[0_0_20px_rgba(0,85,129,0.3)] hover:shadow-[0_0_30px_rgba(0,85,129,0.5)] transition-shadow">
                 Explore Features
               </a>
             </div>
 
             {/* Stats strip with animation */}
-            <div className="landing-stats-strip items-center justify-center mt-6 p-8 rounded-3xl bg-white/40 dark:bg-[#1a1a2e]/40 border border-[#534AB7]/10 backdrop-blur-xl w-full shadow-lg shadow-[#534AB7]/5">
+            <div className="landing-stats-strip items-center justify-center mt-6 p-8 rounded-3xl bg-white/40 dark:bg-[#05131e]/40 border border-[#005581]/10 backdrop-blur-xl w-full shadow-lg shadow-[#005581]/5">
               <AnimatedCounter end={500} suffix="+" label="Active Students" />
-              <div className="w-px h-10 bg-[#534AB7]/10 dark:bg-[#9d96e8]/20 hidden sm:block mx-4" />
+              <div className="w-px h-10 bg-[#005581]/10 dark:bg-[#72CDF4]/20 hidden sm:block mx-4" />
               <AnimatedCounter end={2000} suffix="+" label="Practice Questions" />
-              <div className="w-px h-10 bg-[#534AB7]/10 dark:bg-[#9d96e8]/20 hidden sm:block mx-4" />
+              <div className="w-px h-10 bg-[#005581]/10 dark:bg-[#72CDF4]/20 hidden sm:block mx-4" />
               <AnimatedCounter end={98} suffix="%" label="Pass Rate" />
-              <div className="w-px h-10 bg-[#534AB7]/10 dark:bg-[#9d96e8]/20 hidden sm:block mx-4" />
+              <div className="w-px h-10 bg-[#005581]/10 dark:bg-[#72CDF4]/20 hidden sm:block mx-4" />
               <AnimatedCounter end={24} suffix="/7" label="AI Support" />
             </div>
 
@@ -233,19 +262,19 @@ export default function LandingPage() {
                 step: "01",
                 title: "Create Your Account",
                 desc: "Sign up for free with your email. No credit card required. Instant access to all features.",
-                icon: <i className="fa-solid fa-user-plus text-[#534AB7] dark:text-[#9d96e8] text-4xl"></i>,
+                icon: <i className="fa-solid fa-user-plus text-[#005581] dark:text-[#72CDF4] text-4xl"></i>,
               },
               {
                 step: "02",
                 title: "Choose Your Modules",
                 desc: "Select the HNDIT subjects you're studying. The AI builds a personalised learning path for you.",
-                icon: <i className="fa-solid fa-book-open text-[#534AB7] dark:text-[#9d96e8] text-4xl"></i>,
+                icon: <i className="fa-solid fa-book-open text-[#005581] dark:text-[#72CDF4] text-4xl"></i>,
               },
               {
                 step: "03",
                 title: "Learn & Achieve",
                 desc: "Practice daily, chat with the AI tutor, complete labs, and track your progress to exam success.",
-                icon: <i className="fa-solid fa-medal text-[#534AB7] dark:text-[#9d96e8] text-4xl"></i>,
+                icon: <i className="fa-solid fa-medal text-[#005581] dark:text-[#72CDF4] text-4xl"></i>,
               },
             ].map((s) => (
               <div key={s.step} className="landing-step-card">
@@ -416,12 +445,7 @@ export default function LandingPage() {
             {/* Brand */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 border-2 border-primary rounded flex items-center justify-center">
-                  <i className="fa-solid fa-globe text-primary font-bold text-sm"></i>
-                </div>
-                <span className="text-2xl font-bold tracking-wider text-primary uppercase">
-                  HNDIT
-                </span>
+                <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-20 md:h-24 w-auto object-contain" />
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed pr-4">
                 HNDIT Smart Lab is Sri Lanka&apos;s leading interactive learning platform for Higher National Diploma in Information Technology students, powered by advanced AI.

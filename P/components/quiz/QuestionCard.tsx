@@ -19,7 +19,7 @@ export function QuestionCard({
 
   return (
     <div className="rounded-2xl border bg-card p-6 shadow-soft">
-      <p className="text-xs font-semibold uppercase text-[#534AB7]">
+      <p className="text-xs font-semibold uppercase text-[#005581]">
         Question {index}/{total}
       </p>
       <h3 className="mt-2 text-lg font-bold text-heading">
@@ -31,10 +31,10 @@ export function QuestionCard({
             <Button
               type="button"
               variant="outline"
-              className="h-auto w-full justify-start rounded-xl border-[#534AB7]/40 py-3 text-left font-medium text-heading"
+              className="h-auto w-full justify-start rounded-xl border-[#005581]/40 py-3 text-left font-medium text-heading"
               onClick={() => onSubmit(opt)}
             >
-              <span className="mr-3 flex h-7 w-7 items-center justify-center rounded-full bg-[#534AB7]/10 text-xs font-bold text-[#534AB7]">
+              <span className="mr-3 flex h-7 w-7 items-center justify-center rounded-full bg-[#005581]/10 text-xs font-bold text-[#005581]">
                 {String.fromCharCode(65 + i)}
               </span>
               {opt}

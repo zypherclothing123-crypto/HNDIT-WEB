@@ -48,15 +48,15 @@ export function ChatMessage({
     role === "user" ? "items-end text-right" : "items-start text-left";
   const bubble =
     role === "user"
-      ? "bg-[#534AB7] text-white rounded-2xl rounded-br-md"
-      : "bg-muted text-heading rounded-2xl rounded-bl-md";
+      ? "bg-[#005581] text-white rounded-2xl rounded-br-sm shadow-md"
+      : "bg-white border-2 border-slate-100 text-slate-800 rounded-2xl rounded-bl-sm shadow-sm dark:bg-[#0a1f2e] dark:border-white/5 dark:text-slate-200";
 
   const initials = userInitials.slice(0, 2).toUpperCase() || "?";
 
   return (
     <div className={`flex w-full flex-col ${align}`}>
       <div
-        className={`flex max-w-[85%] items-end gap-2 ${
+        className={`flex max-w-[85%] items-end gap-3 ${
           role === "user" ? "flex-row-reverse" : "flex-row"
         }`}
       >
@@ -72,7 +72,7 @@ export function ChatMessage({
                 className="object-cover"
               />
             ) : null}
-            <AvatarFallback className="bg-[#534AB7]/80 text-[10px] font-bold text-white">
+            <AvatarFallback className="bg-[#005581] text-[10px] font-bold text-[#ffd200]">
               {initials}
             </AvatarFallback>
           </Avatar>
@@ -81,8 +81,8 @@ export function ChatMessage({
             className="h-8 w-8 shrink-0 border border-muted"
             aria-label="AI assistant"
           >
-            <AvatarFallback className="bg-[#534AB7]/12 text-[#534AB7]">
-              <Bot className="h-4 w-4" aria-hidden />
+            <AvatarFallback className="bg-[#72CDF4]/20 text-[#005581] dark:bg-[#72CDF4]/10 dark:text-[#72CDF4]">
+              <Bot className="h-5 w-5" aria-hidden />
             </AvatarFallback>
           </Avatar>
         )}
@@ -91,7 +91,7 @@ export function ChatMessage({
             s.type === "code" ? (
               <pre
                 key={i}
-                className="my-2 max-w-full overflow-x-auto rounded-xl bg-[#1a1a2e] p-3 text-left text-xs"
+                className="my-2 max-w-full overflow-x-auto rounded-xl bg-[#05131e] p-3 text-left text-xs"
               >
                 <code className={`language-${s.lang ?? "javascript"}`}>
                   {s.value}

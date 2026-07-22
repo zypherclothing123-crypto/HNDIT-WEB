@@ -53,16 +53,15 @@ export default function LoginPage() {
         
         {/* Back Link */}
         <div className="absolute top-8 left-8">
-          <Link href="/" className="text-sm text-slate-500 hover:text-slate-800 transition-colors flex items-center gap-2">
+          <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-500 bg-slate-50 hover:bg-slate-100 hover:text-slate-900 rounded-full transition-all">
             ← Back to home
           </Link>
         </div>
 
         <div className="w-full max-w-md">
           {/* Logo / Header */}
-          <div className="flex items-center gap-3 mb-8">
-            <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-16 md:h-20 w-auto object-contain" />
-            <h1 className="text-2xl font-bold text-slate-900 tracking-tight">HNDIT Smart Lab</h1>
+          <div className="flex justify-center mb-10">
+            <img src="/hnditlogo.png" alt="HNDIT Logo" className="h-28 md:h-32 w-auto object-contain drop-shadow-md" />
           </div>
           
           <h2 className="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h2>
@@ -85,7 +84,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@company.com"
-                className="w-full bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#534AB7]/20 focus:border-[#534AB7] transition-all"
+                className="w-full bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#005581]/20 focus:border-[#005581] transition-all hover:border-[#72CDF4]"
               />
             </div>
 
@@ -96,7 +95,7 @@ export default function LoginPage() {
                 </label>
                 <Link
                   href="/auth/forgot-password"
-                  className="text-xs text-[#534AB7] hover:text-indigo-700 font-medium transition-colors"
+                  className="text-xs text-[#005581] hover:text-[#ffd200] font-medium transition-colors"
                 >
                   Forgot password?
                 </Link>
@@ -108,7 +107,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#534AB7]/20 focus:border-[#534AB7] transition-all pr-10"
+                  className="w-full bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#005581]/20 focus:border-[#005581] transition-all hover:border-[#72CDF4] pr-10"
                 />
                 <button
                   type="button"
@@ -123,7 +122,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#534AB7] hover:bg-[#4a42a3] text-white font-semibold py-3 rounded-xl transition-all shadow-md shadow-[#534AB7]/20 disabled:opacity-70 mt-2"
+              className="w-full bg-[#005581] hover:bg-[#ffd200] hover:text-slate-900 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-md shadow-[#005581]/20 disabled:opacity-70 mt-4"
             >
               {loading ? "Signing in..." : "Log In"}
             </button>
@@ -132,29 +131,29 @@ export default function LoginPage() {
           <div className="mt-8 pt-6 border-t border-slate-100 text-center space-y-3">
             <p className="text-sm text-slate-500">
               Don&apos;t have an account?{" "}
-              <Link href="/auth/register" className="text-[#534AB7] hover:text-indigo-700 font-bold transition-colors">
+              <Link href="/auth/register" className="text-[#005581] hover:text-[#ffd200] font-bold transition-colors">
                 Register Now
               </Link>
             </p>
-            <p className="text-xs text-slate-400">
-              <Link href="/auth/admin-login" className="hover:text-slate-600 transition-colors">
-                Admin login →
+            <div className="pt-3">
+              <Link href="/auth/admin-login" className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-slate-200 text-slate-600 font-medium hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900 transition-all text-sm shadow-sm">
+                <i className="fa-solid fa-user-shield text-[#005581]"></i> Admin Login
               </Link>
-            </p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Right Branding Area */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-[#0f0a1e] via-[#1a1035] to-[#0d0d1a] items-center justify-center p-12">
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-[#001824] via-[#003855] to-[#00111a] items-center justify-center p-12">
         {/* Background orbs */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#534AB7]/10 blur-[120px] animate-pulse" />
-          <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-indigo-600/10 blur-[100px] animate-pulse delay-1000" />
+          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#72CDF4]/20 blur-[120px] animate-pulse" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-[#ffd200]/10 blur-[100px] animate-pulse delay-1000" />
         </div>
         
         <div className="relative z-10 w-full max-w-lg">
-          <p className="text-[#534AB7] font-semibold text-sm tracking-wider uppercase mb-4">
+          <p className="text-[#ffd200] font-semibold text-sm tracking-wider uppercase mb-4">
             HNDIT Smart Learning Platform
           </p>
           <h2 className="text-5xl font-bold text-white leading-tight mb-6">
@@ -174,7 +173,7 @@ export default function LoginPage() {
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="bg-white/10 rounded-xl h-24 p-4 flex flex-col justify-end">
                 <div className="w-8 h-2 bg-white/20 rounded-full mb-2"></div>
-                <div className="w-16 h-4 bg-[#534AB7] rounded-full"></div>
+                <div className="w-16 h-4 bg-[#005581] rounded-full"></div>
               </div>
               <div className="bg-white/10 rounded-xl h-24 p-4 flex flex-col justify-end">
                 <div className="w-12 h-2 bg-white/20 rounded-full mb-2"></div>

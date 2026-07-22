@@ -16,7 +16,7 @@ type Stat = {
 };
 
 const iconWrap =
-  "flex h-11 w-11 items-center justify-center rounded-xl bg-[#534AB7]/10 text-[#534AB7]";
+  "flex h-11 w-11 items-center justify-center rounded-xl bg-[#005581]/10 text-[#005581]";
 
 export function StatsOverview({
   totalStudents,
@@ -65,7 +65,7 @@ export function StatsOverview({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 * i }}
-            className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]"
+            className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]"
           >
             <div className="flex items-center gap-3">
               <div className={iconWrap}>

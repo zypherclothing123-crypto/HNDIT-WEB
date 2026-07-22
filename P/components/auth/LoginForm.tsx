@@ -80,7 +80,7 @@ export function LoginForm() {
           <Label htmlFor="password">Password</Label>
           <Link
             href="/auth/forgot-password"
-            className="text-xs font-semibold text-[#534AB7] hover:underline"
+            className="text-xs font-semibold text-[#005581] hover:underline"
           >
             Forgot password?
           </Link>

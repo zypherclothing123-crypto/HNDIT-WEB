@@ -20,7 +20,7 @@ type Props = {
 
 /**
  * Gradient hero with Sinhala/English welcome, level ring, resume CTA, today&apos;s quest card.
- * Colors: hero-gradient (#534AB7 → #6dd5ed).
+ * Colors: hero-gradient (#005581 → #72CDF4).
  */
 export function HeroBanner({
   name,
@@ -68,7 +68,7 @@ export function HeroBanner({
             </p>
             <Button
               asChild
-              className="rounded-full bg-white px-8 font-semibold text-[#534AB7] hover:bg-white/90"
+              className="rounded-full bg-white px-8 font-semibold text-[#005581] hover:bg-white/90"
             >
               <Link href="/labs">Resume Learning</Link>
             </Button>
@@ -89,7 +89,7 @@ export function HeroBanner({
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.4 }}
-        className="flex flex-col justify-between rounded-3xl bg-gradient-to-br from-[#534AB7]/15 via-[#1D9E75]/10 to-white p-6 shadow-soft dark:from-[#534AB7]/25 dark:to-[#2d2d44]"
+        className="flex flex-col justify-between rounded-3xl bg-gradient-to-br from-[#005581]/15 via-[#1D9E75]/10 to-white p-6 shadow-soft dark:from-[#005581]/25 dark:to-[#0a1f2e]"
       >
         <div>
           <div className="mb-2 flex items-center justify-between">

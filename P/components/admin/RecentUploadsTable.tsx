@@ -138,12 +138,12 @@ export function RecentUploadsTable({
   }
 
   return (
-    <section className="rounded-2xl border bg-white p-0 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]">
+    <section className="rounded-2xl border bg-white p-0 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]">
       <div className="flex items-center justify-between border-b px-6 py-4">
         <h3 className="text-sm font-bold uppercase tracking-wide text-heading">
           Recent Uploads
         </h3>
-        <a href="/admin/upload" className="text-sm font-semibold text-[#534AB7]">
+        <a href="/admin/upload" className="text-sm font-semibold text-[#005581]">
           View All
         </a>
       </div>
@@ -163,7 +163,7 @@ export function RecentUploadsTable({
               return (
                 <TableRow key={`${r.id}-edit`}>
                   <TableCell colSpan={5}>
-                    <div className="flex flex-col gap-4 rounded-xl border border-[#534AB7]/30 bg-[#F8F7FF]/80 p-4 dark:bg-[#1a1a2e]/80">
+                    <div className="flex flex-col gap-4 rounded-xl border border-[#005581]/30 bg-[#FFFFFA]/80 p-4 dark:bg-[#05131e]/80">
                       <div className="grid gap-3 sm:grid-cols-2">
                         <div className="space-y-1.5">
                           <Label htmlFor={`fn-${r.id}`}>File name</Label>

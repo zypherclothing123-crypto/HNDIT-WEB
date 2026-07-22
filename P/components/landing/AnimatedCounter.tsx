@@ -14,7 +14,7 @@ interface AnimatedCounterProps {
 export function AnimatedCounter({ end, suffix = "", duration = 2, label }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { margin: "-100px" });
 
   useEffect(() => {
     if (isInView) {
@@ -32,6 +32,8 @@ export function AnimatedCounter({ end, suffix = "", duration = 2, label }: Anima
         }
       };
       window.requestAnimationFrame(step);
+    } else {
+      setCount(0); // Reset when scrolled out of view
     }
   }, [isInView, end, duration]);
 

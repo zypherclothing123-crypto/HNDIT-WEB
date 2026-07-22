@@ -188,7 +188,7 @@ export function AdminSubjectsWorkspace({ initialStats }: Props) {
 
       <div className="space-y-10">
         {/* ── Add Subject form ── */}
-        <div className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]">
+        <div className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]">
           <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-heading">
             Add subject
           </h2>
@@ -256,7 +256,7 @@ export function AdminSubjectsWorkspace({ initialStats }: Props) {
         {/* ── Edit panel ── */}
         {selected ? (
           <div
-            className="rounded-2xl border-2 border-[#534AB7]/30 bg-white p-6 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]"
+            className="rounded-2xl border-2 border-[#005581]/30 bg-white p-6 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]"
             id="subject-manage-panel"
           >
             <h3 className="text-lg font-bold text-heading">Manage: {selected.name}</h3>

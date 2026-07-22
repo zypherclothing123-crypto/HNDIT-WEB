@@ -90,13 +90,13 @@ export default function UserRegisterPage() {
         <div className="mt-6 flex flex-col gap-2 text-center">
           <p className="text-sm text-muted-foreground">
             Already have an account?{" "}
-            <Link href="/auth/user/login" className="font-semibold text-[#534AB7]">
+            <Link href="/auth/user/login" className="font-semibold text-[#005581]">
               Sign in as Student
             </Link>
           </p>
           <p className="text-xs text-muted-foreground">
             Are you an admin?{" "}
-            <Link href="/auth/admin/login" className="font-semibold text-[#534AB7]">
+            <Link href="/auth/admin/login" className="font-semibold text-[#005581]">
               Sign in as Admin
             </Link>
           </p>

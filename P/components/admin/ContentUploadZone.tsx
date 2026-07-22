@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { CloudUpload } from "lucide-react";
+import { CloudUpload, ScanSearch } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -81,10 +82,10 @@ export function ContentUploadZone({ subjects, onUploaded }: Props) {
   });
 
   return (
-    <section className="rounded-2xl border bg-white p-6 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]">
+    <section className="rounded-2xl border bg-white p-6 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-lg font-bold text-heading">Upload Content</h2>
-        <Badge variant="secondary" className="bg-[#534AB7]/10 text-[#534AB7]">
+        <Badge variant="secondary" className="bg-[#005581]/10 text-[#005581]">
           LUMINA CORE
         </Badge>
       </div>
@@ -140,34 +141,83 @@ export function ContentUploadZone({ subjects, onUploaded }: Props) {
 
       <div
         {...getRootProps()}
-        className={`flex min-h-[220px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-4 py-10 text-center transition-colors ${
+        className={`relative overflow-hidden flex min-h-[220px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-4 py-10 text-center transition-colors ${
           isDragActive
-            ? "border-[#534AB7] bg-[#534AB7]/5"
-            : "border-[#d4d4e8] bg-[#F8F7FF]/80 dark:border-white/20 dark:bg-[#1a1a2e]/60"
+            ? "border-[#005581] bg-[#005581]/5"
+            : busy 
+            ? "border-[#72CDF4] bg-[#72CDF4]/5"
+            : "border-[#d4d4e8] bg-[#FFFFFA]/80 dark:border-white/20 dark:bg-[#05131e]/60"
         }`}
       >
-        <input {...getInputProps()} />
-        <CloudUpload className="mb-3 h-12 w-12 text-[#534AB7]" />
-        <p className="text-sm font-semibold text-heading">
-          Drag and drop course material
-        </p>
-        <p className="mt-1 text-xs text-muted-foreground">
-          PDF, PPTX, or DOCX (Max 20MB). AI extraction optimized for PDF.
-        </p>
-        <Button
-          type="button"
-          className="mt-6 rounded-full px-8"
-          disabled={busy}
-          onClick={(e) => {
-            e.stopPropagation();
-            open();
-          }}
-        >
-          {busy ? "Processing..." : "Browse Files"}
-        </Button>
-        {message ? (
-          <p className="mt-4 text-xs font-medium text-[#534AB7]">{message}</p>
-        ) : null}
+        <input {...getInputProps()} disabled={busy} />
+        
+        <AnimatePresence mode="wait">
+          {busy ? (
+            <motion.div
+              key="busy"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="flex flex-col items-center"
+            >
+              <div className="relative mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#005581]/10">
+                <ScanSearch className="h-8 w-8 text-[#005581]" />
+                <motion.div
+                  className="absolute inset-0 rounded-2xl border-2 border-[#72CDF4]"
+                  animate={{ scale: [1, 1.2, 1], opacity: [1, 0, 1] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                />
+              </div>
+              <p className="text-sm font-bold text-heading">
+                AI Analyzer Active
+              </p>
+              <p className="mt-1 max-w-xs text-xs text-muted-foreground">
+                Extracting knowledge and generating HNDIT lab modules...
+              </p>
+              <motion.div 
+                className="mt-6 h-1.5 w-48 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10"
+              >
+                <motion.div 
+                  className="h-full bg-gradient-to-r from-[#005581] to-[#72CDF4]"
+                  animate={{ x: ["-100%", "100%"] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                />
+              </motion.div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="idle"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex flex-col items-center"
+            >
+              <CloudUpload className="mb-3 h-12 w-12 text-[#005581]" />
+              <p className="text-sm font-semibold text-heading">
+                Drag and drop course material
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                PDF, PPTX, or DOCX (Max 20MB). AI extraction optimized for PDF.
+              </p>
+              <Button
+                type="button"
+                className="mt-6 rounded-full px-8 bg-[#001824] hover:bg-[#003855] text-white"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  open();
+                }}
+              >
+                Browse Files
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {message && !busy && (
+          <p className="absolute bottom-4 text-xs font-medium text-[#005581]">
+            {message}
+          </p>
+        )}
       </div>
     </section>
   );

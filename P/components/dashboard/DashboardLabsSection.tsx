@@ -56,7 +56,7 @@ export function DashboardLabsSection({
     <section className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-[#534AB7]">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#005581]">
             Curriculum
           </p>
           <h2 className="mt-1 text-xl font-bold text-heading md:text-2xl">
@@ -69,7 +69,7 @@ export function DashboardLabsSection({
         </div>
         <Link
           href="/labs"
-          className="inline-flex items-center gap-2 rounded-full border border-[#534AB7]/30 bg-[#534AB7]/5 px-4 py-2 text-sm font-semibold text-[#534AB7] transition hover:bg-[#534AB7]/10"
+          className="inline-flex items-center gap-2 rounded-full border border-[#005581]/30 bg-[#005581]/5 px-4 py-2 text-sm font-semibold text-[#005581] transition hover:bg-[#005581]/10"
         >
           Browse all subjects
           <ArrowRight className="h-4 w-4" />
@@ -87,9 +87,9 @@ export function DashboardLabsSection({
               transition={{ delay: 0.06 * si, duration: 0.35 }}
               className="flex flex-col overflow-hidden rounded-3xl border bg-card shadow-soft ring-1 ring-black/[0.03] dark:ring-white/[0.06]"
             >
-              <div className="border-b bg-gradient-to-br from-[#534AB7]/[0.07] to-transparent px-5 py-4">
+              <div className="border-b bg-gradient-to-br from-[#005581]/[0.07] to-transparent px-5 py-4">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#534AB7]/12 text-[#534AB7]">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#005581]/12 text-[#005581]">
                     <Icon className="h-6 w-6" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -121,7 +121,7 @@ export function DashboardLabsSection({
                   </div>
                   <Link
                     href={`/labs/${subject.id}`}
-                    className="shrink-0 rounded-xl border border-[#534AB7]/20 bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#534AB7] shadow-sm transition hover:bg-[#534AB7]/10 dark:bg-[#2d2d44]"
+                    className="shrink-0 rounded-xl border border-[#005581]/20 bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#005581] shadow-sm transition hover:bg-[#005581]/10 dark:bg-[#0a1f2e]"
                   >
                     Subject hub
                   </Link>
@@ -134,7 +134,7 @@ export function DashboardLabsSection({
                     No labs published yet.{" "}
                     <Link
                       href={`/labs/${subject.id}`}
-                      className="font-semibold text-[#534AB7] hover:underline"
+                      className="font-semibold text-[#005581] hover:underline"
                     >
                       Open subject page
                     </Link>
@@ -146,7 +146,7 @@ export function DashboardLabsSection({
                         href={`/labs/${subject.id}/${lab.id}`}
                         className="group flex items-center gap-3 px-5 py-3 transition hover:bg-muted/60"
                       >
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center text-[#534AB7]/70">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center text-[#005581]/70">
                           {lab.completed ? (
                             <CheckCircle2 className="h-5 w-5 text-[#1D9E75]" />
                           ) : (
@@ -154,7 +154,7 @@ export function DashboardLabsSection({
                           )}
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-semibold text-heading group-hover:text-[#534AB7]">
+                          <p className="truncate text-sm font-semibold text-heading group-hover:text-[#005581]">
                             {lab.title}
                           </p>
                           <div className="mt-0.5 flex flex-wrap items-center gap-2">
@@ -172,7 +172,7 @@ export function DashboardLabsSection({
                             ) : null}
                           </div>
                         </div>
-                        <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-[#534AB7]" />
+                        <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-[#005581]" />
                       </Link>
                     </li>
                   ))
@@ -185,7 +185,7 @@ export function DashboardLabsSection({
 
       {moreSubjects > 0 ? (
         <p className="text-center text-sm text-muted-foreground">
-          <Link href="/labs" className="font-semibold text-[#534AB7] hover:underline">
+          <Link href="/labs" className="font-semibold text-[#005581] hover:underline">
             +{moreSubjects} more subject{moreSubjects !== 1 ? "s" : ""}
           </Link>{" "}
           in the curriculum catalog.

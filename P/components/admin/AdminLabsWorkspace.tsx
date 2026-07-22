@@ -83,7 +83,7 @@ function LabEditorRow({ lab, subjects }: { lab: AdminLabRow; subjects: SubjectOp
   }
 
   return (
-    <li className="rounded-xl border bg-white p-4 dark:border-white/10 dark:bg-[#2d2d44]">
+    <li className="rounded-xl border bg-white p-4 dark:border-white/10 dark:bg-[#0a1f2e]">
       <div className="grid gap-3 sm:grid-cols-[1fr_200px_auto] sm:items-end">
         <div className="space-y-1.5">
           <Label htmlFor={`lab-title-${lab.id}`}>Lab title</Label>
@@ -119,7 +119,7 @@ function LabEditorRow({ lab, subjects }: { lab: AdminLabRow; subjects: SubjectOp
             Save
           </Button>
           <Button variant="outline" size="sm" asChild>
-            <Link href={`/admin/labs/${lab.id}`} className="gap-1 text-[#534AB7] border-[#534AB7]/30">
+            <Link href={`/admin/labs/${lab.id}`} className="gap-1 text-[#005581] border-[#005581]/30">
               Edit Questions
             </Link>
           </Button>
@@ -135,7 +135,7 @@ function LabEditorRow({ lab, subjects }: { lab: AdminLabRow; subjects: SubjectOp
       </div>
       <p className="mt-2 text-xs text-muted-foreground">
         To rename how a subject appears everywhere, go to{" "}
-        <Link href="/admin/subjects" className="font-semibold text-[#534AB7] underline">
+        <Link href="/admin/subjects" className="font-semibold text-[#005581] underline">
           Subjects
         </Link>
         .

@@ -21,7 +21,7 @@ import { EngagementChart } from "@/components/admin/EngagementChart";
 import type { AdminAnalyticsBundle } from "@/lib/admin-analytics";
 
 const iconWrap =
-  "flex h-10 w-10 items-center justify-center rounded-xl bg-[#534AB7]/10 text-[#534AB7]";
+  "flex h-10 w-10 items-center justify-center rounded-xl bg-[#005581]/10 text-[#005581]";
 
 function TrendLineCard({
   title,
@@ -35,7 +35,7 @@ function TrendLineCard({
   color: string;
 }) {
   return (
-    <section className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]">
+    <section className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]">
       <div className="mb-3">
         <h3 className="text-base font-bold text-heading">{title}</h3>
         <p className="text-xs text-muted-foreground">{subtitle}</p>
@@ -104,7 +104,7 @@ export function AdminAnalyticsView({ data }: { data: AdminAnalyticsBundle }) {
   return (
     <div className="space-y-8">
       <div>
-        <p className="text-xs font-bold uppercase tracking-wide text-[#534AB7]">
+        <p className="text-xs font-bold uppercase tracking-wide text-[#005581]">
           Analytics
         </p>
         <h1 className="mt-1 text-2xl font-bold text-heading">
@@ -125,7 +125,7 @@ export function AdminAnalyticsView({ data }: { data: AdminAnalyticsBundle }) {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.04 * i }}
-              className="rounded-2xl border bg-white p-4 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]"
+              className="rounded-2xl border bg-white p-4 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]"
             >
               <div className="flex items-start gap-3">
                 <div className={iconWrap}>
@@ -146,7 +146,7 @@ export function AdminAnalyticsView({ data }: { data: AdminAnalyticsBundle }) {
 
       <div className="grid gap-6 xl:grid-cols-2">
         <EngagementChart data={engagement} />
-        <section className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#2d2d44]">
+        <section className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]">
           <div className="mb-4 flex items-center gap-2">
             <div className={iconWrap}>
               <Activity className="h-5 w-5" />
@@ -194,7 +194,7 @@ export function AdminAnalyticsView({ data }: { data: AdminAnalyticsBundle }) {
           title="Achievements per day"
           subtitle="Last 14 days (badge unlocks)"
           data={achChart}
-          color="#534AB7"
+          color="#005581"
         />
         <TrendLineCard
           title="New profiles"

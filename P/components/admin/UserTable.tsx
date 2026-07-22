@@ -39,7 +39,7 @@ export function UserTable() {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border bg-white shadow-soft dark:bg-[#2d2d44]">
+    <div className="overflow-hidden rounded-2xl border bg-white shadow-soft dark:bg-[#0a1f2e]">
       <table className="w-full text-sm">
         <thead className="bg-muted/50 text-left text-xs uppercase text-muted-foreground">
           <tr>

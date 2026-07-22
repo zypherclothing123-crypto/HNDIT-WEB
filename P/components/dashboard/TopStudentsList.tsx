@@ -29,7 +29,7 @@ export function TopStudentsList({ students }: Props) {
         </p>
         <motion.a
           href="/labs"
-          className="mt-4 block w-full rounded-xl border border-[#534AB7]/30 py-2 text-center text-sm font-semibold text-[#534AB7] hover:bg-[#534AB7]/5"
+          className="mt-4 block w-full rounded-xl border border-[#005581]/30 py-2 text-center text-sm font-semibold text-[#005581] hover:bg-[#005581]/5"
           whileTap={{ scale: 0.98 }}
         >
           Browse labs
@@ -51,7 +51,7 @@ export function TopStudentsList({ students }: Props) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.05 }}
             className={`flex items-center gap-3 rounded-xl px-2 py-2 ${
-              s.isYou ? "bg-[#534AB7]/10 ring-1 ring-[#534AB7]/20" : ""
+              s.isYou ? "bg-[#005581]/10 ring-1 ring-[#005581]/20" : ""
             }`}
           >
             <span className="w-6 text-sm font-bold text-heading">
@@ -79,7 +79,7 @@ export function TopStudentsList({ students }: Props) {
       </ul>
       <motion.a
         href="/leaderboard"
-        className="mt-4 block w-full rounded-xl border border-[#534AB7]/30 py-2 text-center text-sm font-semibold text-[#534AB7] hover:bg-[#534AB7]/5"
+        className="mt-4 block w-full rounded-xl border border-[#005581]/30 py-2 text-center text-sm font-semibold text-[#005581] hover:bg-[#005581]/5"
         whileTap={{ scale: 0.98 }}
       >
         Full Leaderboard

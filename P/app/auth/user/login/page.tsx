@@ -71,7 +71,7 @@ export default function UserLoginPage() {
                 <Label htmlFor="password">Password</Label>
                 <Link
                   href="/auth/forgot-password"
-                  className="text-xs font-semibold text-[#534AB7] hover:underline"
+                  className="text-xs font-semibold text-[#005581] hover:underline"
                 >
                   Forgot password?
                 </Link>
@@ -99,13 +99,13 @@ export default function UserLoginPage() {
         <div className="mt-6 flex flex-col gap-2 text-center">
           <p className="text-sm text-muted-foreground">
             No student account?{" "}
-            <Link href="/auth/user/register" className="font-semibold text-[#534AB7]">
+            <Link href="/auth/user/register" className="font-semibold text-[#005581]">
               Register as Student
             </Link>
           </p>
           <p className="text-xs text-muted-foreground">
             Are you an admin?{" "}
-            <Link href="/auth/admin/login" className="font-semibold text-[#534AB7]">
+            <Link href="/auth/admin/login" className="font-semibold text-[#005581]">
               Sign in as Admin
             </Link>
           </p>

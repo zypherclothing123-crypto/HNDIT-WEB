@@ -20,10 +20,10 @@ export type SubjectCardAdmin = {
 };
 
 const gradients = [
-  "from-[#534AB7] via-[#6B5FD6] to-[#1a1a2e]",
-  "from-[#EF9F27] via-[#534AB7] to-[#1a1a2e]",
-  "from-[#1D9E75] via-[#534AB7] to-[#1a1a2e]",
-  "from-[#6dd5ed] via-[#534AB7] to-[#1a1a2e]",
+  "from-[#005581] via-[#00456a] to-[#05131e]",
+  "from-[#EF9F27] via-[#005581] to-[#05131e]",
+  "from-[#1D9E75] via-[#005581] to-[#05131e]",
+  "from-[#72CDF4] via-[#005581] to-[#05131e]",
 ];
 
 type Props = {
@@ -95,7 +95,7 @@ export function SubjectManagementGrid({
                 interactive && "cursor-pointer transition-transform hover:scale-[1.02]",
                 interactive &&
                   selected &&
-                  "ring-4 ring-white/90 ring-offset-2 ring-offset-[#F8F7FF] dark:ring-offset-[#1a1a2e]"
+                  "ring-4 ring-white/90 ring-offset-2 ring-offset-[#FFFFFA] dark:ring-offset-[#05131e]"
               )}
             >
               {!interactive ? (

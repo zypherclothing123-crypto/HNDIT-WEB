@@ -32,7 +32,7 @@ export function AdminAppChrome({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="page-shell flex min-h-screen items-start bg-[#F8F7FF] dark:bg-[#1a1a2e]">
+    <div className="page-shell flex min-h-screen items-start bg-[#FFFFFA] dark:bg-[#05131e]">
       <AdminSidebar className="hidden md:flex" />
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
         <SheetContent

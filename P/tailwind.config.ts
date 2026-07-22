@@ -16,8 +16,8 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#534AB7",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -45,7 +45,7 @@ const config: Config = {
         },
         success: "#1D9E75",
         warning: "#EF9F27",
-        heading: "#1a1a2e",
+        heading: "#05131e",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -58,7 +58,7 @@ const config: Config = {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        soft: "0 4px 24px -4px rgba(83, 74, 183, 0.12)",
+        soft: "0 4px 24px -4px rgba(0, 85, 129, 0.12)",
       },
     },
   },

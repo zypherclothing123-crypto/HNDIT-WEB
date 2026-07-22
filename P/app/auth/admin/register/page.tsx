@@ -90,13 +90,13 @@ export default function AdminRegisterPage() {
         <div className="mt-6 flex flex-col gap-2 text-center">
           <p className="text-sm text-muted-foreground">
             Already have an admin account?{" "}
-            <Link href="/auth/admin/login" className="font-semibold text-[#534AB7]">
+            <Link href="/auth/admin/login" className="font-semibold text-[#005581]">
               Sign in as Admin
             </Link>
           </p>
           <p className="text-xs text-muted-foreground">
             Are you a student?{" "}
-            <Link href="/auth/user/login" className="font-semibold text-[#534AB7]">
+            <Link href="/auth/user/login" className="font-semibold text-[#005581]">
               Sign in as Student
             </Link>
           </p>

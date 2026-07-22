@@ -81,7 +81,7 @@ export function QuizPlayer({
         animate={{ scale: 1, opacity: 1 }}
         className="rounded-2xl border bg-card p-8 text-center shadow-soft"
       >
-        <p className="text-sm font-semibold text-[#534AB7]">Quiz complete</p>
+        <p className="text-sm font-semibold text-[#005581]">Quiz complete</p>
         <h3 className="mt-2 text-2xl font-bold text-heading">
           You scored {score} / {totalPoints}
         </h3>

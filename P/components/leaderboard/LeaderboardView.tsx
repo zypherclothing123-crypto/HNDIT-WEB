@@ -78,7 +78,7 @@ export function LeaderboardView({ entries, currentUserId }: Props) {
   return (
     <div className="mx-auto max-w-5xl space-y-10">
       <header className="space-y-2">
-        <p className="text-sm font-semibold text-[#534AB7]">
+        <p className="text-sm font-semibold text-[#005581]">
           HNDIT Learning Lab
         </p>
         <h1 className="text-3xl font-bold text-heading">The Arena</h1>
@@ -98,18 +98,19 @@ export function LeaderboardView({ entries, currentUserId }: Props) {
             p.rank === 1 ? "h-52" : p.rank === 2 ? "h-44" : "h-36";
           const border =
             p.rank === 1
-              ? "border-amber-400"
+              ? "border-[#ffd200] bg-gradient-to-t from-[#ffd200]/20 to-white dark:to-[#0a1f2e] shadow-[0_0_20px_rgba(255,210,0,0.3)]"
               : p.rank === 2
-                ? "border-gray-300"
-                : "border-orange-700";
+                ? "border-[#72CDF4] bg-gradient-to-t from-[#72CDF4]/20 to-white dark:to-[#0a1f2e] shadow-[0_0_15px_rgba(114,205,244,0.2)]"
+                : "border-[#005581] bg-gradient-to-t from-[#005581]/20 to-white dark:to-[#0a1f2e] shadow-[0_0_10px_rgba(0,85,129,0.2)]";
           const lvl = levelFromXp(p.totalXp).level;
           return (
             <motion.div
               key={p.userId}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.08 * i }}
-              className={`flex w-40 flex-col items-center rounded-2xl border-2 bg-card shadow-soft ${border} ${height}`}
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ delay: 0.08 * i, type: "spring", stiffness: 300 }}
+              className={`flex w-40 flex-col items-center rounded-3xl border-2 shadow-soft ${border} ${height}`}
             >
               <div className="mt-4 text-sm font-bold text-heading">
                 {p.rank === 1 ? "⭐1" : p.rank}
@@ -117,14 +118,14 @@ export function LeaderboardView({ entries, currentUserId }: Props) {
               <EntryAvatar
                 name={p.displayName}
                 avatarUrl={p.avatarUrl}
-                className="mt-3 h-14 w-14 border-2 border-white shadow"
+                className="mt-3 h-14 w-14 border-2 border-white shadow-md dark:border-black"
                 fallbackClassName="text-xs"
               />
               <p className="mt-2 line-clamp-2 text-center text-sm font-semibold">
                 {p.displayName}
               </p>
               <p className="text-xs text-muted-foreground">Level {lvl}</p>
-              <p className="text-xs font-semibold text-[#534AB7]">
+              <p className="text-xs font-semibold text-[#005581]">
                 {podiumTitle(p.rank)}
               </p>
               <p className="mt-auto mb-4 text-xs font-bold">
@@ -137,15 +138,15 @@ export function LeaderboardView({ entries, currentUserId }: Props) {
 
       <section className="space-y-3">
         {you ? (
-          <div className="rounded-2xl border bg-[#534AB7]/10 p-4">
+          <div className="rounded-2xl border bg-[#005581]/10 p-4">
             <div className="flex items-start gap-3">
               <EntryAvatar
                 name={you.displayName}
                 avatarUrl={you.avatarUrl}
-                className="h-12 w-12 border border-[#534AB7]/30"
+                className="h-12 w-12 border border-[#005581]/30"
               />
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-bold text-[#534AB7]">You</p>
+                <p className="text-xs font-bold text-[#005581]">You</p>
                 <p className="text-lg font-bold text-heading">
                   #{yourRank} · {you.displayName}
                 </p>
@@ -162,26 +163,30 @@ export function LeaderboardView({ entries, currentUserId }: Props) {
           const rank = 4 + i;
           const lvl = levelFromXp(row.totalXp).level;
           return (
-            <div
+            <motion.div
               key={row.userId}
-              className="flex flex-wrap items-center justify-between rounded-2xl border bg-card p-4 shadow-sm"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.05 * i }}
+              whileHover={{ scale: 1.01 }}
+              className="flex flex-wrap items-center justify-between rounded-2xl border bg-card p-4 shadow-sm transition-shadow hover:border-[#72CDF4] hover:shadow-md"
             >
-              <div className="flex items-center gap-3">
-                <span className="font-bold">{rank}</span>
+              <div className="flex items-center gap-4">
+                <span className="w-6 text-center font-bold text-muted-foreground">{rank}</span>
                 <EntryAvatar name={row.displayName} avatarUrl={row.avatarUrl} />
                 <div>
-                  <p className="font-semibold">{row.displayName}</p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="font-bold text-heading">{row.displayName}</p>
+                  <p className="text-xs font-semibold text-[#005581]">
                     LEVEL {lvl}
                   </p>
                 </div>
               </div>
               <div className="text-right text-sm">
-                <p className="font-semibold">
+                <p className="font-bold text-heading">
                   {row.totalXp.toLocaleString()} XP
                 </p>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </section>

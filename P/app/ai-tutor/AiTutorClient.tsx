@@ -96,7 +96,7 @@ export function AiTutorClient({ userAvatarUrl, userInitials }: Props) {
         <Button
           type="button"
           variant="outline"
-          className="rounded-full border-[#534AB7] text-[#534AB7]"
+          className="rounded-full border-[#005581] text-[#005581]"
           onClick={() =>
             setLanguage((l) => (l === "en" ? "si" : "en"))
           }
@@ -139,29 +139,36 @@ export function AiTutorClient({ userAvatarUrl, userInitials }: Props) {
             userInitials={userInitials}
           />
         ))}
-        {busy ? <TypingIndicator /> : null}
+        {busy && <TypingIndicator />}
+        <div className="h-4" />
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 border-t bg-background/90 p-4 backdrop-blur md:left-64">
-        <div className="mx-auto flex max-w-4xl gap-2">
+      <div className="fixed bottom-0 left-0 right-0 z-10 flex justify-center border-t border-white/20 bg-white/80 p-4 backdrop-blur-xl dark:border-white/5 dark:bg-[#05131e]/90 md:left-64">
+        <form
+          className="flex w-full max-w-4xl items-center gap-3 rounded-2xl border-2 border-slate-200 bg-white p-2 shadow-xl dark:border-white/10 dark:bg-[#0a1f2e]"
+          onSubmit={(e) => {
+            e.preventDefault();
+            send();
+          }}
+        >
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type your question..."
-            className="rounded-2xl"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") void send();
-            }}
+            disabled={busy}
+            placeholder={
+              language === "en" ? "Ask the AI tutor..." : "ඔබට අවශ්‍ය දේ අසන්න..."
+            }
+            className="flex-1 border-0 bg-transparent px-4 text-base shadow-none focus-visible:ring-0 dark:placeholder-slate-400"
+            autoFocus
           />
           <Button
-            className="rounded-2xl px-6"
-            type="button"
-            disabled={busy}
-            onClick={() => void send()}
+            type="submit"
+            disabled={!input.trim() || busy}
+            className="rounded-xl bg-[#ffd200] px-6 font-bold text-[#001824] transition-all hover:scale-105 hover:bg-[#005581] hover:text-white"
           >
-            Send
+            {language === "en" ? "Send" : "යවන්න"}
           </Button>
-        </div>
+        </form>
       </div>
     </div>
   );

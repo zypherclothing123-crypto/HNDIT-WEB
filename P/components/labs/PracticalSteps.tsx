@@ -6,7 +6,7 @@ type Step = { step: number; title: string; detail: string };
 
 export function PracticalSteps({ steps }: { steps: Step[] }) {
   return (
-    <ol className="relative space-y-4 border-l-2 border-[#534AB7]/30 pl-6">
+    <ol className="relative space-y-4 border-l-2 border-[#005581]/30 pl-6">
       {steps.map((step, i) => (
         <motion.li
           key={step.step}
@@ -16,7 +16,7 @@ export function PracticalSteps({ steps }: { steps: Step[] }) {
           transition={{ delay: i * 0.06 }}
           className="relative"
         >
-          <span className="absolute -left-[31px] flex h-8 w-8 items-center justify-center rounded-full bg-[#534AB7] text-xs font-bold text-white">
+          <span className="absolute -left-[31px] flex h-8 w-8 items-center justify-center rounded-full bg-[#005581] text-xs font-bold text-white">
             {step.step}
           </span>
           <div className="rounded-2xl border bg-card p-4 shadow-sm">
