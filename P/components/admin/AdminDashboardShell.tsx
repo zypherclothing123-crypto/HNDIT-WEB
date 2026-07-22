@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { StatsOverview } from "@/components/admin/StatsOverview";
 import { ContentUploadZone } from "@/components/admin/ContentUploadZone";
 import { RecentUploadsTable, type UploadRow } from "@/components/admin/RecentUploadsTable";
@@ -31,6 +32,14 @@ export function AdminDashboardShell({
   engagement: WeeklyEngagement;
 }) {
   const router = useRouter();
+
+  // Real-time analytics polling
+  useEffect(() => {
+    const interval = setInterval(() => {
+      router.refresh();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [router]);
 
   return (
     <div className="space-y-8">

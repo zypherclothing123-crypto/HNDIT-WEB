@@ -138,7 +138,7 @@ export function RecentUploadsTable({
   }
 
   return (
-    <section className="rounded-2xl border bg-white p-0 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]">
+    <section className="rounded-3xl border-2 border-white/20 bg-white/80 p-0 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-[#05131e]/90">
       <div className="flex items-center justify-between border-b px-6 py-4">
         <h3 className="text-sm font-bold uppercase tracking-wide text-heading">
           Recent Uploads

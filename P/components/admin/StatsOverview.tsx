@@ -15,8 +15,12 @@ type Stat = {
   icon: typeof Users;
 };
 
-const iconWrap =
-  "flex h-11 w-11 items-center justify-center rounded-xl bg-[#005581]/10 text-[#005581]";
+const iconStyles: Record<string, string> = {
+  "Total Students": "bg-[#ffd200]/15 text-[#ffd200]",
+  "Active Subjects": "bg-[#72CDF4]/15 text-[#72CDF4]",
+  "AI Analyses": "bg-[#005581]/15 text-[#005581]",
+  "Quiz Completions": "bg-emerald-500/15 text-emerald-500",
+};
 
 export function StatsOverview({
   totalStudents,
@@ -62,14 +66,15 @@ export function StatsOverview({
         return (
           <motion.div
             key={item.label}
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05 * i }}
-            className="rounded-2xl border bg-white p-5 shadow-soft dark:border-white/10 dark:bg-[#0a1f2e]"
+            whileHover={{ y: -4, scale: 1.02 }}
+            transition={{ delay: 0.05 * i, type: "spring", stiffness: 300 }}
+            className="group rounded-3xl border-2 bg-white p-6 shadow-sm transition-all hover:border-[#72CDF4] hover:shadow-lg dark:border-white/10 dark:bg-[#0a1f2e]"
           >
-            <div className="flex items-center gap-3">
-              <div className={iconWrap}>
-                <Icon className="h-5 w-5" />
+            <div className="flex items-center gap-4">
+              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${iconStyles[item.label] || "bg-slate-100 text-slate-500"}`}>
+                <Icon className="h-6 w-6" />
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-[#6b7280]">

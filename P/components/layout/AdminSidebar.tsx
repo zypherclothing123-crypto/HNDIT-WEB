@@ -20,7 +20,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 
 const items = [
-  { href: "/admin/dashboard", label: "Overview", icon: LayoutDashboard },
+  { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/analytics", label: "Analytics", icon: LineChart },
   { href: "/profile", label: "My profile", icon: UserCircle },
   { href: "/admin/subjects", label: "Subjects", icon: BookOpen },

@@ -38,6 +38,12 @@ export function EngagementChart({ data }: { data: WeeklyEngagement }) {
       <div className="h-56 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data.chart}>
+            <defs>
+              <linearGradient id="colorActivity" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#72CDF4" stopOpacity={0.9} />
+                <stop offset="95%" stopColor="#005581" stopOpacity={0.9} />
+              </linearGradient>
+            </defs>
             <CartesianGrid
               strokeDasharray="3 3"
               stroke="#e5e7eb"
@@ -46,12 +52,12 @@ export function EngagementChart({ data }: { data: WeeklyEngagement }) {
             <XAxis dataKey="day" tick={{ fontSize: 11 }} stroke="#9ca3af" />
             <YAxis hide />
             <Tooltip
-              cursor={{ fill: "rgba(83,74,183,0.06)" }}
-              contentStyle={{ borderRadius: 12, borderColor: "#e5e7eb" }}
+              cursor={{ fill: "rgba(114,205,244,0.1)" }}
+              contentStyle={{ borderRadius: 12, borderColor: "#e5e7eb", border: "2px solid #72CDF4" }}
             />
             <Bar
               dataKey="activity"
-              fill="#005581"
+              fill="url(#colorActivity)"
               radius={[8, 8, 0, 0]}
               maxBarSize={32}
             />
@@ -62,9 +68,13 @@ export function EngagementChart({ data }: { data: WeeklyEngagement }) {
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-3 rounded-xl bg-[#FFFFFA] p-3 dark:bg-[#05131e]"
+          whileHover={{ y: -3, scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          className="flex items-center gap-3 rounded-2xl border-2 border-transparent bg-[#FFFFFA] p-4 shadow-sm transition-all hover:border-[#ffd200] hover:shadow-md dark:bg-[#05131e]"
         >
-          <Target className="h-8 w-8 text-[#005581]" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ffd200]/15">
+            <Target className="h-6 w-6 text-[#ffd200]" />
+          </div>
           <div>
             <p className="text-xs font-semibold text-muted-foreground">
               Busiest day
@@ -87,15 +97,18 @@ export function EngagementChart({ data }: { data: WeeklyEngagement }) {
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05 }}
-          className="flex items-center gap-3 rounded-xl bg-[#FFFFFA] p-3 dark:bg-[#05131e]"
+          whileHover={{ y: -3, scale: 1.02 }}
+          transition={{ delay: 0.05, type: "spring", stiffness: 300 }}
+          className="flex items-center gap-3 rounded-2xl border-2 border-transparent bg-[#FFFFFA] p-4 shadow-sm transition-all hover:border-[#72CDF4] hover:shadow-md dark:bg-[#05131e]"
         >
-          <Zap className="h-8 w-8 text-[#1D9E75]" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#72CDF4]/15">
+            <Zap className="h-6 w-6 text-[#72CDF4]" />
+          </div>
           <div>
             <p className="text-xs font-semibold text-muted-foreground">
               Quiz completions
             </p>
-            <p className="text-lg font-bold text-[#1D9E75]">
+            <p className="text-lg font-bold text-[#72CDF4]">
               {data.weekTotal} this week
             </p>
             <p className="text-xs text-muted-foreground">{deltaStr}</p>
