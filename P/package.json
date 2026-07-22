@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "clean": "npx --yes rimraf@5 .next",
     "build": "next build",
     "start": "next start",
