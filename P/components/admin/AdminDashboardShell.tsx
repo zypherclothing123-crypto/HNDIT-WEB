@@ -33,11 +33,11 @@ export function AdminDashboardShell({
 }) {
   const router = useRouter();
 
-  // Real-time analytics polling
+  // Removed aggressive 10s polling as it causes constant compilation in dev mode
   useEffect(() => {
     const interval = setInterval(() => {
-      router.refresh();
-    }, 10000);
+      // router.refresh(); 
+    }, 60000);
     return () => clearInterval(interval);
   }, [router]);
 

@@ -65,12 +65,11 @@ export function UserTable() {
     setLoading(false);
   }
 
-  // Real-time polling every 10 seconds
+  // Real-time polling every 10 seconds (client-side only)
   useEffect(() => {
     void load();
     const interval = setInterval(() => {
       void load();
-      router.refresh();
     }, 10000);
     return () => clearInterval(interval);
   }, [router]);
