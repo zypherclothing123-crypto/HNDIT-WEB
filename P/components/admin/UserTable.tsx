@@ -28,17 +28,28 @@ export function UserTable() {
 
   async function load() {
     // 1. Fetch profiles
-    const { data: profiles } = await supabase
+    const { data: profiles, error: profilesError } = await supabase
       .from("profiles")
       .select("id, email, full_name, role, avatar_url")
       .order("created_at", { ascending: false });
 
-    if (!profiles) return;
+    if (profilesError) {
+      console.error("Failed to fetch profiles:", profilesError);
+    }
+
+    if (!profiles) {
+      setLoading(false);
+      return;
+    }
 
     // 2. Fetch progress to calculate XP and Labs Completed
-    const { data: progress } = await supabase
+    const { data: progress, error: progressError } = await supabase
       .from("user_progress")
       .select("user_id, score, completed");
+
+    if (progressError) {
+      console.error("Failed to fetch user progress:", progressError);
+    }
 
     const byUser = new Map<string, { xp: number; labs: number }>();
     if (progress) {
@@ -88,6 +99,15 @@ export function UserTable() {
 
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {rows.length === 0 && (
+        <div className="col-span-full py-16 flex flex-col items-center justify-center text-center space-y-3 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-2xl border border-white/20">
+          <Shield className="h-12 w-12 text-[#72CDF4] opacity-50" />
+          <h3 className="text-xl font-bold text-slate-800 dark:text-white">No Students Found</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md">
+            There are currently no students to display, or your account does not have Admin privileges to view the master list.
+          </p>
+        </div>
+      )}
       <AnimatePresence>
         {rows.map((r, i) => {
           const label = r.full_name?.trim() || r.email?.split("@")[0] || "Learner";

@@ -4,7 +4,13 @@ DROP SCHEMA public CASCADE;
 
 -- 2. RECREATE THE SCHEMA
 CREATE SCHEMA public;
-GRANT ALL ON SCHEMA public TO postgres, public;
+GRANT ALL ON SCHEMA public TO postgres, anon, authenticated, service_role;
+GRANT ALL ON SCHEMA public TO public;
+
+-- Restore default Supabase permissions
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO postgres, anon, authenticated, service_role;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO postgres, anon, authenticated, service_role;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO postgres, anon, authenticated, service_role;
 
 -- 3. APPLY THE CORRECTED SCHEMA (with TEXT types for Clerk IDs)
 
@@ -26,13 +32,17 @@ alter table public.profiles enable row level security;
 
 create or replace function public.is_admin()
 returns boolean
-language sql
+language plpgsql
+security definer
+set search_path = public
 stable
 as $$
-  select coalesce(
-    (select role = 'admin' from public.profiles where id = auth.uid()::text),
-    false
-  );
+declare
+  adm boolean;
+begin
+  select (role = 'admin') into adm from public.profiles where id = auth.uid()::text;
+  return coalesce(adm, false);
+end;
 $$;
 
 drop policy if exists "profiles_select_own_or_admin" on public.profiles;

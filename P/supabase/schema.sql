@@ -17,13 +17,17 @@ alter table public.profiles enable row level security;
 
 create or replace function public.is_admin()
 returns boolean
-language sql
+language plpgsql
+security definer
+set search_path = public
 stable
 as $$
-  select coalesce(
-    (select role = 'admin' from public.profiles where id = auth.uid()),
-    false
-  );
+declare
+  adm boolean;
+begin
+  select (role = 'admin') into adm from public.profiles where id = auth.uid();
+  return coalesce(adm, false);
+end;
 $$;
 
 drop policy if exists "profiles_select_own_or_admin" on public.profiles;

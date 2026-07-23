@@ -43,15 +43,19 @@ ALTER TABLE public.chat_sessions ADD CONSTRAINT chat_sessions_user_id_fkey FOREI
 ALTER TABLE public.notifications ADD CONSTRAINT notifications_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.profiles(id) ON DELETE CASCADE;
 
 -- Re-create is_admin function (auth.uid() is uuid, but we can cast to text or just use text comparison if Clerk JWT is used)
-CREATE OR REPLACE FUNCTION public.is_admin()
-RETURNS boolean
-LANGUAGE sql
-STABLE
-AS $$
-  SELECT COALESCE(
-    (SELECT role = 'admin' FROM public.profiles WHERE id = auth.uid()::text),
-    false
-  );
+create or replace function public.is_admin()
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+stable
+as $$
+declare
+  adm boolean;
+begin
+  select (role = 'admin') into adm from public.profiles where id = auth.uid()::text;
+  return coalesce(adm, false);
+end;
 $$;
 
 -- Re-create policies (casting auth.uid() to text)

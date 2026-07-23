@@ -30,6 +30,21 @@ ALTER TABLE public.chat_sessions ADD CONSTRAINT chat_sessions_user_id_fkey FOREI
 ALTER TABLE public.notifications ADD CONSTRAINT notifications_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.profiles(id) ON DELETE CASCADE;
 
 -- Re-create the profiles policies
+create or replace function public.is_admin()
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+stable
+as $$
+declare
+  adm boolean;
+begin
+  select (role = 'admin') into adm from public.profiles where id = auth.uid()::text;
+  return coalesce(adm, false);
+end;
+$$;
+
 CREATE POLICY "profiles_select_own_or_admin" ON public.profiles FOR SELECT USING (id = auth.uid()::text OR public.is_admin());
 CREATE POLICY "profiles_update_own_or_admin" ON public.profiles FOR UPDATE USING (id = auth.uid()::text OR public.is_admin());
 CREATE POLICY "profiles_insert_own" ON public.profiles FOR INSERT WITH CHECK (id = auth.uid()::text OR public.is_admin());

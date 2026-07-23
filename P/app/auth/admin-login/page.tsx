@@ -32,15 +32,25 @@ export default function AdminLoginPage() {
     }
 
     // Verify admin role in profiles table
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from("profiles")
-      .select("role")
+      .select("role, id, email")
       .eq("id", data.user.id)
       .single();
 
+    if (profileError) {
+      console.error("Profile fetch error:", profileError);
+      await supabase.auth.signOut();
+      setError(`Database Error: ${profileError.message} (Did the profile trigger fail?)`);
+      setLoading(false);
+      return;
+    }
+
+    console.log("Fetched Profile:", profile);
+
     if (profile?.role !== "admin") {
       await supabase.auth.signOut();
-      setError("Access denied. This account does not have admin privileges.");
+      setError(`Access denied. Current role is '${profile?.role || "NONE"}'. Not an admin.`);
       setLoading(false);
       return;
     }
@@ -84,8 +94,7 @@ export default function AdminLoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@example.com"
-                className="w-full bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#005581]/20 focus:border-[#005581] transition-all hover:border-[#72CDF4]"
+                className="w-full bg-white border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#005581]/20 focus:border-[#005581] transition-all hover:border-[#72CDF4]"
               />
             </div>
 
@@ -97,8 +106,7 @@ export default function AdminLoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#005581]/20 focus:border-[#005581] transition-all hover:border-[#72CDF4] pr-10"
+                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#005581]/20 focus:border-[#005581] transition-all hover:border-[#72CDF4] pr-10"
                 />
                 <button
                   type="button"
