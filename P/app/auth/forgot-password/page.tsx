@@ -128,7 +128,7 @@ export default function ForgotPasswordPage() {
             Get back into<br/>your account.
           </h2>
           <p className="text-slate-400 text-lg leading-relaxed">
-            Don't worry if you've forgotten your password. We'll send you a secure link to get you back on track in no time.
+            Don&apos;t worry if you&apos;ve forgotten your password. We&apos;ll send you a secure link to get you back on track in no time.
           </p>
 
           <div className="mt-12 bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm shadow-2xl max-w-sm">
